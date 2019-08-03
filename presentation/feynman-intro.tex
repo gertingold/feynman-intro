@@ -1,0 +1,79 @@
+\documentclass[t,dvipsnames]{beamer}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault,lining,scaled=.85]{FiraSans}
+\usepackage[scaled=0.85]{FiraMono}
+\usepackage{newtxsf}
+\usepackage{pifont}
+\usepackage[utf8]{inputenc}
+\usepackage{mdwlist}
+\usepackage{hyperref}
+
+\setbeamerfont{frametitle}{family=\sffamily\firamedium}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{  
+  \leavevmode
+   \begin{beamercolorbox}{logo in headline}
+	\includegraphics[width=\paperwidth]{UA_mnf_headline}
+   \end{beamercolorbox}
+}
+\makeatletter
+\definecolor{beamer@blendedblue}{rgb}{0,0.39608,0.38039}
+
+
+\defbeamertemplate*{frametitle}{sidebar theme}
+{%
+  \nointerlineskip%
+  \newdimen\beamer@headheight
+  \beamer@headheight=2\baselineskip
+  \vskip-\beamer@headheight%
+  \vbox to \beamer@headheight{%
+    \vfil
+    \leftskip=1truecm%
+    \rightskip=-\beamer@rightmargin%
+    \advance\rightskip by0.3cm plus1fil%
+    {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
+    {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
+    \vbox{}%
+    \vskip-1em%
+    \vfil
+  }%
+}
+
+\makeatother
+\setbeamercolor{alerted text}{fg=red!70!black}
+
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Presentation at the Bad Honnef Physics School on
+	       Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, propagator, particle in a box,
+                particle on a ring, harmonic oscillator}
+}
+
+\graphicspath{{./img/}}
+
+\title[Introduction to Feynman path integrals]%
+      {Introduction to Feynman path integrals}
+
+\begin{document}
+
+\begin{frame}[t]{}
+ \vspace{2.0truecm}
+ \begin{center}
+   \structure{\LARGE\firamedium Introduction to Feynman path integrals}\\[0.2truecm]
+
+   \vspace{0.1truecm}
+   {\Large Gert-Ludwig Ingold}
+
+   {\large Universität Augsburg}
+
+   \vspace{3.4truecm}
+   {\scriptsize Bad Honnef Physics School on \textit{Methods of Path Integration in
+    Modern Physics}, 25.--31.8.2019}
+ \end{center}
+\end{frame}
+\end{document}
