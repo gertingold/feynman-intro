@@ -10,6 +10,8 @@
 \usepackage{mdwlist}
 \usepackage{hyperref}
 
+\usetheme{UAmnf}
+
 \setbeamerfont{frametitle}{family=\sffamily\firamedium}
 \setbeamercolor{frametitle}{fg=white}
 \setbeamertemplate{navigation symbols}{}
@@ -19,30 +21,6 @@
 	\includegraphics[width=\paperwidth]{UA_mnf_headline}
    \end{beamercolorbox}
 }
-\makeatletter
-\definecolor{beamer@blendedblue}{rgb}{0,0.39608,0.38039}
-
-
-\defbeamertemplate*{frametitle}{sidebar theme}
-{%
-  \nointerlineskip%
-  \newdimen\beamer@headheight
-  \beamer@headheight=2\baselineskip
-  \vskip-\beamer@headheight%
-  \vbox to \beamer@headheight{%
-    \vfil
-    \leftskip=1truecm%
-    \rightskip=-\beamer@rightmargin%
-    \advance\rightskip by0.3cm plus1fil%
-    {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
-    {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
-    \vbox{}%
-    \vskip-1em%
-    \vfil
-  }%
-}
-
-\makeatother
 \setbeamercolor{alerted text}{fg=red!70!black}
 
 \hypersetup{%
@@ -75,5 +53,126 @@
    {\scriptsize Bad Honnef Physics School on \textit{Methods of Path Integration in
     Modern Physics}, 25.--31.8.2019}
  \end{center}
+\end{frame}
+
+\navtrue
+
+\section{Motivation}
+
+\begin{frame}[t]{Classical mechanics: Hamilton vs. Lagrange}
+
+ \vspace{-0.5truecm}
+ \begin{columns}
+  \begin{column}[t]{0.5\textwidth}
+   \begin{center}
+    \textbf{Hamilton formalism}
+
+    Hamiltonian $H(q, p)$
+
+    \vspace{0.2truecm}
+    Poisson bracket $\{q, p\} = 1$
+
+    equations of motion $\dot q = \{q, H\}, \dot p = \{p, H\}$
+   \end{center}
+  \end{column}%
+  \begin{column}[t]{0.5\textwidth}
+   \begin{center}
+    \textbf{Lagrange formalism}
+
+    Lagrangian $L(q, \dot q)$
+
+    \vspace{0.2truecm}
+    action $S = \int\text{d}t L(q, \dot q)$
+
+    equation of motion from Hamilton's principle $\delta S = 0$
+
+   \end{center}
+  \end{column}%
+ \end{columns}
+
+ \begin{columns}
+  \begin{column}[t]{0.5\textwidth}
+   \begin{center}
+    $\Arrowvert$
+
+    canonical quantization $[\hat q, \hat p] = \text{i}\hbar$
+
+    $\Downarrow$
+   \end{center}
+  \end{column}%
+  \begin{column}[t]{0.5\textwidth}
+   \begin{center}
+    $\Arrowvert$
+
+    ?
+
+    $\Downarrow$
+   \end{center}
+  \end{column}%
+ \end{columns}
+
+ \begin{columns}
+  \begin{column}[t]{0.5\textwidth}
+   \begin{center}
+   Heisenberg, Schrödinger, \ldots (1925)
+
+   Schrödinger equation $\hat H\vert\Psi\rangle =
+	  \text{i}\hbar\frac{\partial}{\partial t}\vert\Psi\rangle$ 
+   \end{center}
+  \end{column}%
+  \begin{column}[t]{0.5\textwidth}
+   \begin{center}
+    Dirac (1933), Feynman (1948)
+
+    \vspace{0.2truecm}
+    \fcolorbox{red!70!black}{red!10}{%
+       \begin{minipage}{0.75\textwidth}
+	\begin{center}
+         \alert{Path integral formulation of quantum mechanics}
+	\end{center}
+       \end{minipage}
+    }
+   \end{center}
+  \end{column}%
+ \end{columns}
+\end{frame}
+
+\begin{frame}[c]{Why base quantum mechanics\\ on Lagrange formalism?}
+ path integral formulation of quantum mechanics \ldots
+ \begin{itemize}
+  \item \ldots can provide an alternative view on physical problems
+  \item \ldots does without operators\\
+	for fermionic fields, Grassmann variables are used
+\item \ldots is very well suited for relativistic field theories\\[0.2truecm]
+	action $S=\int\text{d}^4x\mathcal{L}(\phi, \partial_\mu\phi)$
+		 is a Minkowski scalar\\[0.2truecm]
+	Hamiltonian density $\mathcal{H}(\phi, \pi)$ corresponds to the
+	$0-0$ component of the energy-momentum tensor
+ \end{itemize}
+\end{frame}
+
+\section{Propagator}
+
+\begin{frame}[t]{}
+\end{frame}
+
+\section{Derivation of\\ path integral}
+
+\begin{frame}[t]{}
+\end{frame}
+
+\section{Particle in a box}
+
+\begin{frame}[t]{}
+\end{frame}
+
+\section{Particle on a ring}
+
+\begin{frame}[t]{}
+\end{frame}
+
+\section{Harmonic oscillator}
+
+\begin{frame}[t]{}
 \end{frame}
 \end{document}
