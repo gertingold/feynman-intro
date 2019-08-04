@@ -1,0 +1,46 @@
+% Copyright 2007 by Till Tantau
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackage{beamercolorthemeUAmnf}
+% derived from $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemewhale.sty,v 1.4 2007/01/28 20:48:24 tantau Exp $
+
+
+\mode<presentation>
+
+\definecolor{mnf}{RGB}{0,101,97}
+\setbeamercolor*{structure}{fg=mnf}
+
+%\setbeamercolor*{palette primary}{use=structure,fg=white,bg=structure.fg}
+\setbeamercolor*{palette primary}{use=structure,fg=white,bg=white} % bg gibt Hintergrund des Siegels
+                                                                % fg gibt Schriftfarbe des Titels
+\setbeamercolor*{palette secondary}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor*{palette tertiary}{use=structure,fg=white,bg=structure.fg!50!black}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+
+%\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor*{sidebar}{use=structure,bg=white} % bg gibt sidebar Hintergrund
+  
+%\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=black,bg=white} % fg gibt Schriftfarbe von ausgew. subsection
+                                                                        % bg gibt Hintergrund von ausgew. subsection
+									% nicht ausgew. subsection ist Mischfarbe
+%\setbeamercolor*{palette sidebar secondary}{fg=white}
+%\setbeamercolor*{palette sidebar secondary}{fg=black!50,bg=black} % section
+\setbeamercolor*{palette sidebar secondary}{fg=black,bg=white} % wie primary, aber jetzt für section
+%\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=red}
+\setbeamercolor*{palette sidebar quaternary}{fg=structure.fg}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\mode
+<all>
