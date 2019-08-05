@@ -1,5 +1,5 @@
 \documentclass[t,dvipsnames]{beamer}
-\usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{siunitx}
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault,lining,scaled=.85]{FiraSans}
@@ -312,7 +312,123 @@
  \end{center}
 \end{frame}
 
-\begin{frame}[t]{}
+\begin{frame}[c]{Strategy for the derivation of the\\
+	         Feynman path integral}
+ basic steps:
+ \begin{itemize}
+  \item use semigroup property to split the propagator into
+	a large number of short-time propagators
+  \item use the Baker-Campbell-Hausdorff formula to separate
+	kinetic and potential contributions to the Hamiltonian
+        in the time-evolution operator
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[c]{Baker-Campbell-Hausdorff formula\\
+	         and Lie-Trotter formula}
+ application to a short-time propagator with operators $T$ and
+ $V$ representing kinetic and potential energy, respectively
+ \begin{displaymath}
+   \exp\left(-\frac{\text{i}}{\hbar}(T+V)\Delta t\right)
+	  = \exp\left(-\frac{\text{i}}{\hbar}V\Delta t\right)
+	     \exp\left(-\frac{\text{i}}{\hbar}T\Delta t\right)
+	     \exp\left(-\frac{\text{i}}{\hbar^2}X\Delta t^2\right)
+ \end{displaymath}
+ \begin{displaymath}
+  X = \frac{\text{i}}{2}[V,T]
+      -\frac{1}{6\hbar}\bigg([V,[V,T]]-2[T,[T,V]]\bigg)\Delta t+\ldots
+ \end{displaymath}
+
+ \vspace{0.3truecm}
+ for $\Delta t\to 0$, the last factor may be neglected
+
+ \structure{$\Rightarrow$ Lie-Trotter formula}
+ \begin{displaymath}
+  \exp\left(-\frac{\text{i}}{\hbar}(T+V)t\right) =
+    \lim_{N\to\infty}\left[\exp\left(-\frac{\text{i}}{\hbar}V\frac{t}{N}\right)
+      \exp\left(-\frac{\text{i}}{\hbar}T\frac{t}{N}\right)\right]^N
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{Splitting the propagator I}
+ propagator\qquad $\Delta t=\dfrac{t}{N}\quad q_0=q_\text{i}\quad q_N=q_\text{f}$
+ \begin{multline*}
+  \hspace{-0.5truecm}\langle q_\text{f}\vert U(t)\vert q_\text{i}\rangle =\\
+  \int_{-\infty}^{+\infty}\left(\prod_{n=1}^{N-1}\text{d}q_n\right)
+    \langle q_\text{f}\vert \cdots\vert q_n\rangle\underbrace{\langle q_n\vert
+	 \text{e}^{-\frac{\text{i}}{\hbar}V\Delta t}
+	 \text{e}^{-\frac{\text{i}}{\hbar}T\Delta t}
+	 \vert q_{n-1}\rangle}_{\mathclap{\text{\small $%
+	 \sqrt{\frac{m}{2\pi\text{i}\hbar\Delta t}}\exp\left[\frac{\text{i}}{\hbar}
+	 \left(\frac{m(q_n-q_{n-1})^2}{2\Delta t}-V(q_n)\Delta t\right)\right]$}}}
+	 \langle q_{n-1}\vert\cdots\vert q_\text{i}\rangle
+ \end{multline*}
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{splitting}
+ \end{center}
+\end{frame}
+
+\begin{frame}[c]{Splitting the propagator II}
+ \begin{multline*}
+  \langle q_\text{f}\vert U(t)\vert q_\text{i}\rangle
+  = \sqrt{\frac{m}{2\pi\text{i}\hbar\Delta t}}\int_{-\infty}^{+\infty}
+    \prod_{n=1}^{N-1}\left(\sqrt{\frac{m}{2\pi\text{i}\hbar\Delta t}}\text{d}q_n\right)\\
+    \times\exp\left[\frac{\text{i}}{\hbar}\sum_{n=1}^N\left(
+	 \frac{m}{2}\bigg(\frac{q_n-q_{n-1}}{\Delta t}\bigg)^2
+	 -V(q_n)\right)\Delta t\right]
+ \end{multline*}
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{splitting}
+ \end{center}
+
+ \vspace{0.5truecm}
+ \begin{center}
+  let us now take the continuum limit $N\to\infty$
+ \end{center}
+\end{frame}
+
+\begin{frame}[c]{Action}
+ \begin{displaymath}
+  \lim_{N\to\infty}\sum_{n=1}^N\left(\frac{m}{2}\bigg(\frac{q_n-q_{n-1}}{\Delta t}\bigg)^2
+                                     -V(q_n)\right)\Delta t
+	= \int_0^t\text{d}s\left(\frac{m}{2}\dot q(s)-V(q)\right)
+ \end{displaymath}
+
+ in the exponent of the propagator, we find the action functional
+ \begin{displaymath}
+  S[q] = \int_0^t\text{d}s\left(\frac{m}{2}\dot q(s)-V\big(q(s)\big)\right)
+ \end{displaymath}
+ which takes a function $q(s)$ and returns a number $S$
+
+ \begin{center}
+  \structure{%
+  $\Rightarrow$\quad%
+  \begin{minipage}[t]{0.7\textwidth}
+   \raggedright we have obtained a connection between the Lagrange formalism
+   of classical mechanics and the quantum mechanical propagator
+  \end{minipage}}
+ \end{center}
+\end{frame}
+
+\begin{frame}[c]{Feynman path integral}
+ propagator as functional integral (Feynman path integral)
+
+ \begin{center}
+  \fcolorbox{red!70!black}{red!10}{\alert{%
+    $\displaystyle K(q_\text{f}, q_\text{i}, t) = \int_{q(0)=q_\text{i}}^{q(t)=q_\text{f}}\mathcal{D}q\,
+    exp\left(\frac{\text{i}}{\hbar}S[q]\right)$
+  }}
+ \end{center}
+
+ \vspace{0.5truecm}
+ the integral runs over all trajectories $q(s)$ satisfying the boundary
+ conditions $q(0)=q_\text{i}$ and $q(t)=q_\text{f}$
+\end{frame}
+
+\begin{frame}[c]{Physical interpretation}
+\end{frame}
+
+\begin{frame}[c]{Quantum fluctuations}
 \end{frame}
 
 \section{Particle in a box}
