@@ -423,12 +423,56 @@
  \vspace{0.5truecm}
  the integral runs over all trajectories $q(s)$ satisfying the boundary
  conditions $q(0)=q_\text{i}$ and $q(t)=q_\text{f}$
+
+ \begin{center}
+  \includegraphics[width=0.8\textwidth]{feynman}
+ \end{center}
 \end{frame}
 
-\begin{frame}[c]{Physical interpretation}
+\begin{frame}[c]{Evaluation of a Feynman path integral}
+ \begin{itemize}
+  \item evaluate discretized version as an $N$-dimensional integral\\
+	for linear systems, the following relation is useful:
+	\begin{displaymath}
+	 \int_{-\infty}^{+\infty}\text{d}x^N \exp\left(-\mathbf{x}^\text{T}
+	    \mathbf{A}\hspace{0.1em}\mathbf{x}\right) =
+		\sqrt{\frac{\pi^N}{\det(\mathbf{A})}}
+	\end{displaymath}
+  \item expansion in a complete set of functions\\
+	$\rightarrow$ see our later discussion of the harmonic oscillator
+ \end{itemize}
+
+ \vspace{0.5truecm}
+ \begin{center}
+ \fbox{%
+  \begin{minipage}{0.75\textwidth}
+   \textit{Exercise:} Evaluate the Feynman path integral for the free particle
+   by means of discretization. Why is the result independent of $N$?
+  \end{minipage}}
+ \end{center}
+\end{frame}
+
+\begin{frame}[t]{Physical interpretation}
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{feynman}
+ \end{center}
+
+ \begin{itemize}
+  \item All trajectories connecting initial to final point in the given
+	time contribute to the propagator.
+  \item Almost all of these trajectories are not solutions of the
+        corresponding classical equation of motion.
+  \item Each trajectory contributes with a phase factor depending on 
+	the action associated with the trajectory, cf. double slit.
+  \item The nonclassical trajectories can be viewed as contributions
+	of quantum fluctuations.
+ \end{itemize}
 \end{frame}
 
 \begin{frame}[c]{Quantum fluctuations}
+ What makes the classical trajectory special?
+
+ Conventional integral as an analogy:
 \end{frame}
 
 \section{Particle in a box}
