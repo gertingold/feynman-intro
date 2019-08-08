@@ -476,13 +476,35 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}[c]{Quantum fluctuations}
- What makes the classical trajectory special?
-
+\begin{frame}[t]{Classical trajectory and\\ quantum fluctuations}
+ \vspace{0.4truecm}
  Conventional integral as an analogy:
+
+ \vspace{0.5truecm}
+ \begin{columns}
+  \begin{column}[b]{0.37\textwidth}
+   $S(x)=x^2$
+	  
+   $x=0$ corresponds to\\[-0.1truecm] classical trajectory
+
+   \vspace{0.8truecm}
+   $f(x)=\cos(S(x))$
+
+   \vspace{0.9truecm}
+   $I(x)=\int_{-x}^x\text{d}u\cos(S(u))$
+
+   \vspace{0.3truecm}
+  \end{column}\hspace{-0.5truecm}%
+  \begin{column}[b]{0.6\textwidth}
+   \includegraphics[width=\textwidth]{saddlepoint}
+  \end{column}%
+ \end{columns}
+
+ The dominant contributions come from stationary points of the action and
+ fluctuations around it.
 \end{frame}
 
-\section{Particle in a box}
+\section{Particle on a ring}
 
 \begin{frame}[c]{}
  \begin{center}
@@ -492,10 +514,72 @@
  \end{center}
 \end{frame}
 
-\begin{frame}[t]{}
+\begin{frame}[t]{Standard approach}
+ particle of mass $m$ on a ring of radius $R$
+
+ \vspace{0.3truecm}
+ Hamiltonian\quad $H = -\dfrac{\hbar^2}{2mR^2}\dfrac{\text{d}^2}{\text{d}\phi^2}$
+
+ \vspace{0.5truecm}
+ eigenfunctions with $\psi(0) = \psi(2\pi)$ and $\psi'(0) = \psi'(2\pi)$
+ \begin{displaymath}
+  \psi_\ell(\phi) = \frac{1}{\sqrt{2\pi}}\text{e}^{\text{i}\ell\phi}\qquad
+  \ell = 0, \pm1, \pm2, \ldots
+ \end{displaymath}
+
+ eigenenergies
+ \begin{displaymath}
+  E_\ell = \frac{\hbar^2\ell^2}{2mR^2}
+ \end{displaymath}
+
+ propagator
+ \begin{displaymath}
+  K(\phi_\text{f}, \phi_\text{i}, t) = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}
+	 \exp\left(\text{i}\ell(\phi_\text{f}-\phi_\text{i})
+		   -\text{i}\frac{\hbar\ell^2}{2mR^2}t\right)
+ \end{displaymath}
 \end{frame}
 
-\section{Particle on a ring}
+\begin{frame}[t]{More than one way}
+ two ways to reach $\phi_\text{f}$:\qquad
+	\raisebox{-2truecm}{\includegraphics[width=0.6\textwidth]{ring_1}}
+
+ \vspace{0.5truecm}
+ \begin{itemize}
+  \item the two paths cannot be deformed into each other
+  \item two contributions:\\[0.2truecm]
+	$R\sqrt{\dfrac{m}{2\pi\text{i}\hbar t}}\exp\left(\dfrac{\text{i}}{\hbar}
+		 \dfrac{mR^2}{2}\dfrac{(\phi_\text{f}-\phi_\text{i})^2}{t}\right)$
+	\quad and\\[0.2truecm]
+	$R\sqrt{\dfrac{m}{2\pi\text{i}\hbar t}}\exp\left(\dfrac{\text{i}}{\hbar}
+        \dfrac{mR^2}{2}\dfrac{\big((\phi_\text{f}-2\pi)-\phi_\text{i}\big)^2}{t}\right)$
+ \end{itemize}
+ \begin{flushright}
+  but there is more \ldots
+ \end{flushright}
+\end{frame}
+
+\begin{frame}[t]{Winding numbers and propagator}
+ \begin{center}
+  \includegraphics[width=0.8\textwidth]{ring_2}
+ \end{center}
+
+ \begin{itemize}
+  \item the angles $\phi_\text{f}$ and $\phi_\text{f}+2\pi n$ have
+	to be identfied
+  \item the propagator is a sum over all topologically distinct contributions
+	\begin{displaymath}
+	 K(\phi_\text{f}, \phi_\text{i}, t) = R\sqrt{\dfrac{m}{2\pi\text{i}\hbar t}}
+         \sum_{n=-\infty}^{+\infty}\exp\left(\dfrac{\text{i}}{\hbar}\dfrac{mR^2}{2}
+ 	 \dfrac{(\phi_\text{f}-\phi_\text{i}-2\pi n)^2}{t}\right)
+	\end{displaymath}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Relating the two representations}
+\end{frame}
+
+\section{Particle in a box}
 
 \begin{frame}[c]{}
  \begin{center}
