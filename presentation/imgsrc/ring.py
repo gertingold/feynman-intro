@@ -1,4 +1,6 @@
 from math import cos, sin, radians
+import os
+import sys
 
 from pyx import canvas, color, path, style, text, trafo, unit
 
@@ -18,7 +20,8 @@ def spiral(radius, angle, n, dphi=5):
     return p
 
 
-def winding(n, radius, angle=60, endpointcolor=color.rgb(0.6, 0.2, 0),
+def winding(n, radius, angle=60, windingnumber=False,
+            endpointcolor=color.rgb(0.6, 0.2, 0),
             pathcolor=color.rgb(0.4, 0.3, 0.8)):
     c = canvas.canvas()
     ticklen = 0.1
@@ -33,7 +36,8 @@ def winding(n, radius, angle=60, endpointcolor=color.rgb(0.6, 0.2, 0),
         c.text((tick_outer+0.3)*cos(_angle),
                (tick_outer+0.3)*sin(_angle), label,
                [text.halign.center, text.valign.middle, endpointcolor])
-    c.text(0, -radius-0.3, f'$n={n}$', [text.halign.center, text.valign.top])
+    if windingnumber:
+        c.text(0, -radius-0.3, f'$n={n}$', [text.halign.center, text.valign.top])
     c.stroke(spiral(radius, angle, n), [pathcolor, style.linewidth.Thick])
     return c
 
@@ -45,12 +49,15 @@ text.preamble(r'''\usepackage[sfdefault,lining,scaled=.85]{FiraSans}
                   \usepackage{newtxsf}''')
 unit.set(vscale=1.2, wscale=1.3, xscale=1.3)
 
+basename = os.path.splitext(sys.argv[0])[0]
 c = canvas.canvas()
 dx = 3.5*radius
-dy = 3.5*radius
 for nr, n in enumerate((0, -1)):
     c.insert(winding(n, radius), [trafo.translate(nr*dx, 0)])
-for nr, n in enumerate((1, -2, 2)):
-    c.insert(winding(n, radius), [trafo.translate(nr*dx, -dy)])
+c.writePDFfile(f'{basename}_1')
 
-c.writePDFfile()
+c = canvas.canvas()
+for nr, n in enumerate((1, -2, 2)):
+    c.insert(winding(n, radius, windingnumber=True), [trafo.translate(nr*dx, 0)])
+c.writePDFfile(f'{basename}_2')
+
