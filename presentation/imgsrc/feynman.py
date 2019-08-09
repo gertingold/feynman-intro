@@ -9,10 +9,9 @@ lowertick = -0.15
 color_cl = color.rgb(0.2, 0, 0.8)
 color_fluc = color.rgb(0.2, 0.6, 0)
 
-text.set(text.LatexRunner)
+text.set(engine=text.LatexEngine)
 text.preamble(r'''\usepackage[sfdefault,scaled=.85]{FiraSans}
-                  \usepackage{newtxsf}
-                  \usepackage{nicefrac}''')
+                  \usepackage{newtxsf}''')
 unit.set(vscale=1.2, wscale=1.3, xscale=1.3)
 c = canvas.canvas()
 c.stroke(path.line(0, 0, width, 0), [deco.earrow])

@@ -3,7 +3,7 @@ from pyx import canvas, color, deco, path, style, text, unit
 
 axislen = 3
 
-text.set(text.LatexRunner)
+text.set(engine=text.LatexEngine)
 text.preamble(r'''\usepackage[sfdefault,scaled=.85]{FiraSans}
                   \usepackage{newtxsf}
                   \usepackage{nicefrac}''')

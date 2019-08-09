@@ -8,10 +8,9 @@ qf = 2
 tmax = 0.8*width
 lowertick = -0.15
 
-text.set(text.LatexRunner)
+text.set(engine=text.LatexEngine)
 text.preamble(r'''\usepackage[sfdefault,scaled=.85]{FiraSans}
-                  \usepackage{newtxsf}
-                  \usepackage{nicefrac}''')
+                  \usepackage{newtxsf}''')
 unit.set(vscale=1.2, wscale=1.3, xscale=1.3)
 c = canvas.canvas()
 c.stroke(path.line(0, 0, width, 0), [deco.earrow])
