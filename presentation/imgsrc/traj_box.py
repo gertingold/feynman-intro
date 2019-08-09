@@ -19,6 +19,7 @@ text.preamble(r'''\usepackage[sfdefault,scaled=.85]{FiraSans}
                   \usepackage{newtxsf}''')
 unit.set(vscale=1.2, wscale=1.3, xscale=1.8)
 c = canvas.canvas()
+c.fill(path.rect(0, 0, width, height), [color.rgb(0.92, 1, 0.92)])
 c.fill(path.rect(0, 0, -boxwidth, height), [boxcolor])
 c.stroke(path.line(0, 0, 0, height), [style.linewidth.thick])
 c.text(0, labelypos, '$0$', [text.halign.center])
