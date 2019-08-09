@@ -589,7 +589,83 @@
  \end{itemize}
 \end{frame}
 
-\begin{frame}[t]{Relating the two representations}
+\begin{frame}[c]{Dual representations}
+ two different expressions for the propagator
+
+ \vspace{0.4truecm}
+ \structure{winding number}
+ \begin{displaymath}
+  K(\phi_\text{f}, \phi_\text{i}, t) = R\sqrt{\dfrac{m}{2\pi\text{i}\hbar t}}
+      \sum_{n=-\infty}^{+\infty}\exp\left(\dfrac{\text{i}}{\hbar}\dfrac{mR^2}{2}
+      \dfrac{(\phi_\text{f}-\phi_\text{i}-2\pi n)^2}{t}\right)
+ \end{displaymath}
+
+ \vspace{0.2truecm}
+ \structure{angular momentum}
+ \begin{displaymath}
+  K(\phi_\text{f}, \phi_\text{i}, t) = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}
+	 \exp\left(\text{i}\ell(\phi_\text{f}-\phi_\text{i})
+		   -\text{i}\frac{\hbar\ell^2}{2mR^2}t\right)
+ \end{displaymath}
+
+ \vspace{0.2truecm}
+ compare with propagator of free particle
+ \begin{displaymath}
+  K(q_\text{f}, q_\text{i}, t)
+    = \frac{1}{2\pi}\int_{-\infty}^{+\infty}\frac{\text{d}p}{\hbar}
+	  \exp\left(\text{i}\frac{p}{\hbar}(q_\text{f}-q_\text{i})
+		    -\text{i}\frac{p^2}{2\hbar m}t\right)
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{A useful relation}
+ Fourier representation of a periodic $\delta$-comb
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{deltacomb}
+ \end{center}
+
+ \vspace{0.2truecm}
+ \begin{displaymath}
+  \sum_{n=-\infty}^{+\infty}\delta(x-2\pi n)
+  = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\text{e}^{\text{i}\ell x}
+ \end{displaymath}
+
+ \vspace{0.4truecm}
+ \begin{center}
+ \fbox{%
+  \begin{minipage}{0.41\textwidth}
+   \textit{Exercise:} Verify this relation.
+  \end{minipage}}
+ \end{center}
+\end{frame}
+
+\begin{frame}[c]{Relating the two representations}
+ \begin{footnotesize}
+  \begin{displaymath}
+   \begin{aligned}
+    K(\phi_\text{f}, \phi_\text{i}, t)
+    &= R\sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+        \sum_{n=-\infty}^{+\infty}\exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2}
+        \frac{(\phi_\text{f}-\phi_\text{i}-2\pi n)^2}{t}\right)\\
+    &= R\sqrt{\frac{m}{2\pi\text{i}\hbar t}}\int_{-\infty}^{+\infty}\!\!\text{d}\phi
+       \exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2t}\phi^2\right)\frac{1}{2\pi}
+       \sum_{n=-\infty}^{+\infty}\delta\big(\phi-(\phi_\text{f}-\phi_\text{i}-2\pi n)\big)\\
+    &= \frac{R}{2\pi}\sqrt{\frac{m}{2\pi\text{i}\hbar t}}\sum_{\ell=-\infty}^{+\infty}
+ 	  \exp^{-\text{i}\ell(\phi_\text{f}-\phi_\text{i})}\int_{-\infty}^{+\infty}\!\!\text{d}\phi
+       \exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2t}\phi^2+\text{i}\ell\phi\right)\\
+    &= \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\exp\!\left(\text{i}\ell(\phi_\text{f}-\phi_\text{i})
+	   -\text{i}\frac{\hbar\ell^2}{2mR^2}t\right)\qquad\text{\normalsize\ding{51}}
+   \end{aligned}
+  \end{displaymath}
+ \end{footnotesize}
+
+ \vspace{0.4truecm}
+ \begin{center}
+ \fbox{%
+  \begin{minipage}{0.5\textwidth}
+   \textit{Exercise:} Fill in the missing details.
+  \end{minipage}}
+ \end{center}
 \end{frame}
 
 \section{Particle in a box}
@@ -602,7 +678,119 @@
  \end{center}
 \end{frame}
 
-\begin{frame}[t]{}
+\begin{frame}[t]{Standard approach}
+ particle of mass $m$ in an infinitely deep potential well of width $L$
+
+ \vspace{0.3truecm}
+ Hamiltonian\quad $H = -\dfrac{\hbar^2}{2m}\dfrac{\text{d}^2}{\text{d}q^2}$
+
+ \vspace{0.5truecm}
+ eigenfunctions with $\psi(0) = \psi(L) = 0$
+ \begin{displaymath}
+  \psi_j(q) = \sqrt{\frac{2}{L}}\sin\!\left(\frac{\pi j}{L}q\right)\qquad
+  j = 1, 2, 3, \ldots
+ \end{displaymath}
+
+ eigenenergies
+ \begin{displaymath}
+  E_j = \frac{\hbar^2\pi^2}{2mL^2}j^2
+ \end{displaymath}
+
+ propagator
+ \begin{displaymath}
+  K(q_\text{f}, q_\text{i}, t) = \frac{2}{L}\sum_{j=1}^{\infty}
+    \exp\left(-\text{i}\frac{\hbar\pi^2j^2}{2mL^2}t\right)
+	 \sin\!\left(\frac{\pi j}{L}q_\text{f}\right)
+	 \sin\!\left(\frac{\pi j}{L}q_\text{i}\right)
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[t]{Possible trajectories}
+
+ \vspace{-0.5truecm}
+ \begin{center}
+  \includegraphics[width=0.5\textwidth]{traj_box}
+ \end{center}
+
+ unfolding of the trajectories
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{unfolding}
+ \end{center}
+
+ \begin{itemize}
+  \item sum over propagators of a free particle
+  \item relative phase between the various contributions?
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Influence of a wall}
+ \begin{center}
+  \includegraphics[width=0.6\textwidth]{wall}
+ \end{center}
+
+ subtract the contribution of paths crossing the wall:
+ \begin{displaymath}
+  K_\text{wall}(q_\text{f}, q_\text{i}, t)
+  = K_\text{free}(q_\text{f}, q_\text{i}, t) - K_\text{free}(-q_\text{f}, q_\text{i}, t)
+ \end{displaymath}
+
+ \begin{itemize}
+  \item compare with method of images in electrostatics
+  \item each reflection yields a factor $-1$
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Propagator for particle in a box}
+
+ \vspace{-0.3truecm}
+ \begin{center}
+  \includegraphics[width=0.7\textwidth]{images}
+ \end{center}
+
+ \textcolor{red!60!black}{even number of reflections at $q = q_\text{f}+2nL$}\\
+ \textcolor{blue!60!black}{odd number of reflections at $q = 2nL-q_\text{f}$}
+
+ \vspace{0.3truecm}
+ propagator
+ \begin{displaymath}
+  \begin{aligned}
+   K(q_\text{f}, q_\text{i}, t) &= \sqrt{\frac{m}{2\pi\text{i}\hbar t}}\sum_{n=-\infty}^{+\infty}
+    \left[\exp\!\left(\frac{\text{i}}{\hbar}
+	  \frac{m(2nL+q_\text{f}-q_\text{i})^2}{2t}\right)\right.\\
+    &\hspace{3truecm}-\left.\exp\!\left(\frac{\text{i}}{\hbar}
+	  \frac{m(2nL-q_\text{f}-q_\text{i})^2}{2t}\right)\right]
+  \end{aligned}
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[t]{Two versions of the propagator}
+ again, we have obtained two dual versions of the propagator:
+ \begin{displaymath}
+  K(q_\text{f}, q_\text{i}, t) = \frac{2}{L}\sum_{j=1}^{\infty}
+    \exp\left(-\text{i}\frac{\hbar\pi^2j^2}{2mL^2}t\right)
+	 \sin\!\left(\frac{\pi j}{L}q_\text{f}\right)
+	 \sin\!\left(\frac{\pi j}{L}q_\text{i}\right)
+ \end{displaymath}
+ and
+ \begin{displaymath}
+  \begin{aligned}
+   K(q_\text{f}, q_\text{i}, t) &= \sqrt{\frac{m}{2\pi\text{i}\hbar t}}\sum_{n=-\infty}^{+\infty}
+    \left[\exp\!\left(\frac{\text{i}}{\hbar}
+	  \frac{m(2nL+q_\text{f}-q_\text{i})^2}{2t}\right)\right.\\
+    &\hspace{3truecm}-\left.\exp\!\left(\frac{\text{i}}{\hbar}
+	  \frac{m(2nL-q_\text{f}-q_\text{i})^2}{2t}\right)\right]
+  \end{aligned}
+ \end{displaymath}
+
+ \vspace{0.2truecm}
+ \begin{center}
+ \fbox{%
+  \begin{minipage}{0.9\textwidth}
+   \textit{Exercise:} Show that the two representations of the propagator
+	  of a particle in a box agree. Follow the strategy which proved
+	  successful already for the particle on a ring.
+  \end{minipage}}
+ \end{center}
 \end{frame}
 
 \section{Harmonic oscillator}
