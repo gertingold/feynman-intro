@@ -37,7 +37,8 @@ def winding(n, radius, angle=60, windingnumber=False,
                (tick_outer+0.3)*sin(_angle), label,
                [text.halign.center, text.valign.middle, endpointcolor])
     if windingnumber:
-        c.text(0, -radius-0.3, f'$n={n}$', [text.halign.center, text.valign.top])
+        c.text(0, -radius-0.3, '$n={}$'.format(n),
+               [text.halign.center, text.valign.top])
     c.stroke(spiral(radius, angle, n), [pathcolor, style.linewidth.Thick])
     return c
 
@@ -54,10 +55,10 @@ c = canvas.canvas()
 dx = 3.5*radius
 for nr, n in enumerate((0, -1)):
     c.insert(winding(n, radius), [trafo.translate(nr*dx, 0)])
-c.writePDFfile(f'{basename}_1')
+c.writePDFfile('{}_1'.format(basename))
 
 c = canvas.canvas()
 for nr, n in enumerate((1, -2, 2)):
-    c.insert(winding(n, radius, windingnumber=True), [trafo.translate(nr*dx, 0)])
-c.writePDFfile(f'{basename}_2')
-
+    c.insert(winding(n, radius, windingnumber=True),
+             [trafo.translate(nr*dx, 0)])
+c.writePDFfile('{}_2'.format(basename))

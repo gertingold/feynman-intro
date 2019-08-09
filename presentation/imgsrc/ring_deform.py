@@ -25,16 +25,16 @@ c.stroke(path.path(path.moveto(0, 0),
 for x, y, label in ((0.9*width, 0.3*height, r'$q_\text{f}$'),
                     (0.9*width, -0.4*height, r'$q_\text{f}-2\pi$'),
                     (0, 0, r'$q_\text{i}$')):
-        if x == 0:
-            c.text(x-0.15, y, label, [text.halign.right, text.valign.middle])
+    if x == 0:
+        c.text(x-0.15, y, label, [text.halign.right, text.valign.middle])
+    else:
+        if y > 0:
+            linecolor = linecolor1
         else:
-            if y > 0:
-                linecolor = linecolor1
-            else:
-                linecolor = linecolor2
-            c.text(x+0.15, y, label, [text.valign.middle])
-            c.stroke(path.line(0, 0, x, y),
-                     [style.linewidth.thick, linecolor])
-        c.fill(path.circle(x, y, 0.04),
-               [color.grey(1), deco.stroked([color.grey(0)])])
+            linecolor = linecolor2
+        c.text(x+0.15, y, label, [text.valign.middle])
+        c.stroke(path.line(0, 0, x, y),
+                 [style.linewidth.thick, linecolor])
+    c.fill(path.circle(x, y, 0.04),
+           [color.grey(1), deco.stroked([color.grey(0)])])
 c.writePDFfile()
