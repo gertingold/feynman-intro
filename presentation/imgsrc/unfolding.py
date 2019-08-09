@@ -42,7 +42,7 @@ for n, q in enumerate((qf, -qf, 2*boxwidth-qf, -2*boxwidth+qf,
                        2*boxwidth+qf)):
     ypos = (n+0.5)*height/5
     c.stroke(path.line(qi, ypos, q, ypos),
-            [style.linewidth.Thick, color.rgb(0.2, 0, 0.8)])
+             [style.linewidth.Thick, color.rgb(0.2, 0, 0.8)])
     c.stroke(path.circle(qi, ypos, 0.06),
              [style.linewidth.thick, linecolor, deco.filled([color.grey(1)])])
     c.stroke(path.circle(q, ypos, 0.06),
