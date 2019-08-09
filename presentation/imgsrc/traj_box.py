@@ -10,14 +10,14 @@ if ntraj % 2:
 boxwidth = 0.3
 boxcolor = color.grey(0.5)
 linecolor = color.rgb(0.2, 0, 0.8)
-labelypos = -0.5
+labelypos = -0.7
 qi = 2
 qf = 7
 
 text.set(engine=text.LatexEngine)
 text.preamble(r'''\usepackage[sfdefault,scaled=.85]{FiraSans}
                   \usepackage{newtxsf}''')
-unit.set(vscale=1.2, wscale=1.3, xscale=1.3)
+unit.set(vscale=1.2, wscale=1.3, xscale=1.8)
 c = canvas.canvas()
 c.fill(path.rect(0, 0, -boxwidth, height), [boxcolor])
 c.stroke(path.line(0, 0, 0, height), [style.linewidth.thick])
