@@ -895,4 +895,28 @@
   \includegraphics[width=0.7\textwidth]{ho_classical}
  \end{center}
 \end{frame}
+
+\begin{frame}[t]{Classical action}
+ \begin{align}
+  S_\text{cl} &= \int_0^t\text{d}s\frac{m}{2}\left(\dot q_\text{cl}^2(s)
+	            -\omega^2q_\text{cl}^2(s)\right)\nonumber\\
+  \intertext{integration by parts}
+	      &= \left.\frac{m}{2}q_\text{cl}(s)\dot q_\text{cl}(s)\right\vert_0^t
+		 -\int_0^t\text{d}s\frac{m}{2}q_\text{cl}(s)\left(\ddot q_\text{cl}(s)
+			  +\omega^2q_\text{cl}(s)\right)\nonumber\\
+	      &=\frac{m}{2}\big(q_\text{cl}(t)\dot q_\text{cl}(t)
+	                 -q_\text{cl}(0)\dot q_\text{cl}(0)\big)\nonumber
+ \end{align}
+ \begin{displaymath}
+  \dot q_\text{cl}(0) = \omega\frac{q_\text{f}-q_\text{i}\cos(\omega t)}{\sin(\omega t)}\qquad
+  \dot q_\text{cl}(t) = \omega\frac{q_\text{f}\cos(\omega t)-q_\text{i}}{\sin(\omega t)}
+ \end{displaymath}
+
+ \vspace{0.3truecm}
+ \structure{classical action of the harmonic oscillator}
+ \begin{displaymath}
+  S_\text{cl} = \frac{m\omega}{2}\frac{\big(q_\text{f}^2+q_\text{i}^2\big)\cos(\omega t)
+	                               -2q_\text{f}q_\text{i}}{\sin(\omega t)}
+ \end{displaymath}
+\end{frame}
 \end{document}
