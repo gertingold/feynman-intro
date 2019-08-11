@@ -803,6 +803,96 @@
  \end{center}
 \end{frame}
 
-\begin{frame}[t]{}
+\begin{frame}[c]{Path integral for the harmonic oscillator}
+ \structure{path integral representation of the propagator of the\\ harmonic oscillator}
+ \begin{displaymath}
+  K(q_\text{f}, q_\text{i}, t) = \int_{q(0)=q_\text{i}}^{q(t)=q_\text{f}}
+    \mathcal{D}q\exp\left[\frac{\text{i}}{\hbar}\int_0^t\text{d}s
+	 \frac{m}{2}\left(\left(\frac{\text{d}q}{ds}\right)^2-\omega^2q^2\right)\right]
+ \end{displaymath}
+
+ \vspace{0.5truecm}
+ How do we integrate over all functions satisfying the boundary conditions
+ $q(0)=q_\text{i}$ and $q(t)=q_\text{f}$?
+
+ \begin{itemize}
+  \item decompose path into two contributions:
+	\begin{itemize}
+         \item[--] a path satisfying the boundary conditions
+         \item[--] fluctuations around this path described by a complete
+		   set of functions vanishing at the boundaries
+	\end{itemize}
+  \item integrate over the expansion coefficients of the fluctuations
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Path decomposition and action}
+ \vspace{-0.3truecm}
+ \begin{displaymath}
+  q(s) = \bar q(s) + \xi(s)
+ \end{displaymath}
+ \begin{displaymath}
+  \text{with}\quad q(0)=q_\text{i}, q(t)=q_\text{f}\quad\text{and}\quad \xi(0)=\xi(t)=0
+ \end{displaymath}
+ \structure{action}
+ \begin{small}
+  \begin{align}
+   S[q] &= \int_0^t\text{d}s\frac{m}{2}\left[\left(\frac{\text{d}q}{\text{d}s}\right)^2
+ 	   -\omega^2q^2\right]\nonumber\\
+        &= \int_0^t\text{d}s\frac{m}{2}\left[\left(\frac{\text{d}\bar q}{\text{d}s}\right)^2
+           -\omega^2\bar q^2+2\frac{\text{d}\bar q}{\text{d}s}\frac{\text{d}\xi}{\text{d}s}
+           -2\omega^2\bar q\xi+\left(\frac{\text{d}\xi}{\text{d}s}\right)^2-\omega^2\xi^2\right]
+	   \nonumber\\
+   \intertext{integration by parts}
+        &= \int_0^t\text{d}s\frac{m}{2}\left[\left(\frac{\text{d}\bar q}{\text{d}s}\right)^2
+           -\omega^2\bar q^2-2\left(\frac{\text{d}^2\bar q}{\text{d}s^2}+\omega^2\bar q\right)\xi
+           +\left(\frac{\text{d}\xi}{\text{d}s}\right)^2-\omega^2\xi^2\right]\nonumber
+  \end{align}
+ \end{small}
+ linear term in $\xi$ vanishes if $\bar q(s)$ solves the equation of motion
+\end{frame}
+
+\begin{frame}[t]{Classical solution}
+ general solution of the equation of motion of the harmonic oscillator
+ \begin{displaymath}
+  q_\text{cl}(s) = A\cos(\omega s) + B\sin(\omega s)
+ \end{displaymath}
+ boundary conditions
+ \begin{displaymath}
+  \begin{aligned}
+   q_\text{cl}(0) &= q_\text{i} = A\\
+   q_\text{cl}(t) &= q_\text{f} = A\cos(\omega t)+B\sin(\omega t)
+  \end{aligned}
+ \end{displaymath}
+ classical solution satisfying the boundary conditions
+ \begin{displaymath}
+  \begin{aligned}
+   q_\text{cl}(s) &= q_\text{i}\cos(\omega s)
+		     + \frac{q_\text{f}-q_\text{i}\cos(\omega t)}{\sin(\omega t)}\sin(\omega s)\\
+		  &= q_\text{i}\frac{\sin\big(\omega(t-s)\big)}{\sin(\omega t)}
+		     + q_\text{f}\frac{\sin(\omega s)}{\sin(\omega t)}
+  \end{aligned}
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[t]{Existence of classical solution}
+ \begin{displaymath}
+   q_\text{cl}(s) = q_\text{i}\frac{\sin\big(\omega(t-s)\big)}{\sin(\omega t)}
+		    + q_\text{f}\frac{\sin(\omega s)}{\sin(\omega t)}
+ \end{displaymath}
+
+ \vspace{0.3truecm}
+ What happens for $t=\dfrac{2\pi n}{\omega}$?
+
+ \vspace{0.3truecm}
+ boundary value problems \ldots
+ \begin{itemize}
+  \item \ldots do not necessarily have a solution
+  \item \ldots may have more than one solution
+ \end{itemize}
+
+ \begin{center}
+  \includegraphics[width=0.7\textwidth]{ho_classical}
+ \end{center}
 \end{frame}
 \end{document}
