@@ -852,8 +852,37 @@
  linear term in $\xi$ vanishes if $\bar q(s)$ solves the equation of motion
 \end{frame}
 
+\begin{frame}[t]{Expansion around classical solution}
+ \begin{displaymath}
+  q(s) = q_\text{cl}(s)+\xi(s)
+ \end{displaymath}
+
+ \structure{action}
+ \begin{displaymath}
+  \begin{aligned}
+   S[q] &= \int_0^t\text{d}s\frac{m}{2}
+	   \left[\left(\frac{\text{d}q_\text{cl}}{\text{d}s}\right)^2-\omega^2q_\text{cl}^2
+	   +\left(\frac{\text{d}\xi}{\text{d}s}\right)^2-\omega^2\xi^2\right]\\
+        &= S_\text{cl} + \int_0^t\text{d}s\frac{m}{2}\left[
+	   \left(\frac{\text{d}\xi}{\text{d}s}\right)^2-\omega^2\xi^2\right]\\
+  \end{aligned}
+ \end{displaymath}
+
+ \begin{itemize}
+  \item expansion around the classical path makes linear term in $\xi$ disappear because
+	$\delta S=0$ for classical paths
+  \item for the harmonic oscillator:
+	\begin{itemize}
+	 \item classical action $S_\text{cl}$ contains the full dependence on $q_\text{i}$
+	       and $q_\text{f}$
+	 \item fluctuation part is independent of $q_\text{i}$ and $q_\text{f}$ and only
+	       contributes to the prefactor
+	\end{itemize}
+ \end{itemize}
+\end{frame}
+
 \begin{frame}[t]{Classical solution}
- general solution of the equation of motion of the harmonic oscillator
+ general solution of the equation of motion of the \structure{harmonic oscillator}
  \begin{displaymath}
   q_\text{cl}(s) = A\cos(\omega s) + B\sin(\omega s)
  \end{displaymath}
@@ -917,6 +946,120 @@
  \begin{displaymath}
   S_\text{cl} = \frac{m\omega}{2}\frac{\big(q_\text{f}^2+q_\text{i}^2\big)\cos(\omega t)
 	                               -2q_\text{f}q_\text{i}}{\sin(\omega t)}
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{Expansion of the fluctuations}
+ fluctuation part of the action
+ \begin{displaymath}
+  \begin{aligned}
+   \int_0^t\text{d}s\frac{m}{2}\left(\dot\xi^2-\omega^2\xi^2\right)
+ 	&= \underbrace{\left.\frac{m}{2}\xi(s)\dot\xi(s)\right\vert_0^t}_{=0}
+ 	   -\int_0^t\text{d}s\frac{m}{2}\xi\left(\ddot\xi+\omega^2\xi\right)\\
+	  &=-\int_0^t\text{d}s\frac{m}{2}\xi\left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right)\xi
+  \end{aligned}
+ \end{displaymath}
+
+ expand the fluctuations in the complete set of eigenfunctions of $\frac{\text{d}^2}{\text{d}s^2}+\omega^2$
+ vanishing at the boundaries:
+ \begin{displaymath}
+  \left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right)\xi_n(s) = \lambda_n\xi_n(s)
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{Eigenfunctions and -values}
+ \begin{displaymath}
+  \xi_n(s) = \sqrt{\frac{2}{t}}\sin\left(\pi n\frac{s}{t}\right)\qquad
+  \lambda_n = -\frac{\pi^2n^2}{t^2}+\omega^2\qquad n=1, 2,\ldots
+ \end{displaymath}
+
+ \begin{itemize}
+  \item $0\leq \omega t < \pi$:\quad $\lambda_n > 0$ for all $n$\\
+	classical action is a minimum
+  \item $\omega t=\pi$: $a_1\xi_1(s)$ is a classical solution for all amplitudes $a_1$\\
+	\includegraphics[width=0.5\textwidth]{ho_classical}
+  \item $\pi < \omega t < 2\pi$:\quad $\lambda_1 <0,\quad \lambda_n >0$ for $n=2, 3,\ldots$\\
+	classical action is a saddle point
+  \item \ldots
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[c]{Total action and propagator}
+ \structure{action}
+ \begin{displaymath}
+  S[q] = S_\text{cl}-\sum_{n=1}^{\infty}\frac{m}{2}\left(-\frac{\pi^2n^2}{t^2}+\omega^2\right)a_n^2
+ \end{displaymath}
+
+ \structure{propagator}
+ \begin{displaymath}
+  \begin{aligned}
+   K(q_\text{f}, q_\text{i},t) &\sim \int_{-\infty}^{+\infty}\cdots\int_{-\infty}^{+\infty} 
+     \left(\prod_{n=1}^\infty\text{d}a_n\right)\exp\left[\frac{\text{i}}{\hbar}\left(
+       S_\text{cl}-\frac{m}{2}\sum_{n=1}^\infty\lambda_na_n^2\right)\right]\\
+   &\sim \left(\prod_{n=1}^\infty\lambda_n\right)^{-1/2}\exp\left(\frac{\text{i}}{\hbar}S_\text{cl}\right)
+  \end{aligned}
+ \end{displaymath}
+
+ \structure{functional determinant}
+ \begin{displaymath}
+  \det\left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right) = \prod_{n=1}^\infty\lambda_n
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{Prefactor}
+ the prefactor unknown so far does not depend on $\omega$\\
+ $\rightarrow$ compare with propagator of the free particle
+ 
+ \vspace{0.3truecm}
+ \structure{classical action}
+ \begin{displaymath}
+  \lim_{\omega\to 0}\frac{m}{2}\underbrace{\frac{\omega}{\sin(\omega t)}}_{\to 1/t}
+    \underbrace{\big((q_\text{f}^2+q_\text{i}^2)\cos(\omega t)-2q_\text{f}q_\text{i}\big)}_{\to
+	     (q_\text{f}-q_\text{i})^2}
+   = \frac{m}{2}\frac{(q_\text{f}-q_\text{i})^2}{t}\qquad\text{\ding{51}}
+ \end{displaymath}
+
+ \structure{prefactor}
+ \begin{displaymath}
+  \sqrt{\prod_{n=1}^\infty\frac{\lambda_n^{(0)}}{\lambda_n}}\sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+ \end{displaymath}
+
+ with
+ \begin{displaymath}
+  \lambda_n = -\frac{\pi^2n^2}{t^2}+\omega^2\qquad\text{and}\qquad
+  \lambda_n^{(0)} = -\frac{\pi^2n^2}{t^2}
+ \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{Ratio of determinants}
+ \begin{displaymath}
+  \prod_{n=1}^\infty\frac{\lambda_n}{\lambda_n^{(0)}}
+     = \prod_{n=1}^\infty\left(1-\big(\frac{\omega t}{\pi n}\big)^2\right)
+     = \frac{\sin(\omega t)}{\omega t}
+ \end{displaymath}
+
+ \vspace{0.3truecm}
+ \structure{propagator of the harmonic oscillator}
+ \begin{footnotesize}
+  \begin{displaymath}
+   \begin{aligned}
+     K(q_\text{f}, q_\text{i}, t) &= \sqrt{\frac{m\omega}{2\pi\text{i}\hbar\sin(\omega t)}}
+         \exp\left(\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
+		      -2q_\text{i}q_\text{f}}{\sin(\omega t)}\right)\\
+      &= \sqrt{\frac{m\omega}{2\pi\hbar\vert{\sin(\omega t)}\vert}}
+         \exp\left[\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
+         -2q_\text{i}q_\text{f}}{\sin(\omega t)}-\text{i}\left(\frac{\pi}{4}+n\frac{\pi}{2}\right)\right]
+   \end{aligned}
+  \end{displaymath}
+
+  $n$: number of zeros of the sine function crossed up to time $t$
+ \end{footnotesize}
+
+ \vspace{0.3truecm}
+ This choice of the phase ensures the validity of the semigroup property, e.g.
+ \begin{displaymath}
+  K(q_\text{f}, q', \tfrac{3\pi}{2}) = \int_{-\infty}^{+\infty}\text{d}q'
+	     K(q_\text{f}, q', \tfrac{3\pi}{4})K(q', q_\text{i}, \tfrac{3\pi}{4})
  \end{displaymath}
 \end{frame}
 \end{document}
