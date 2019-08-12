@@ -1000,7 +1000,7 @@
   \end{aligned}
  \end{displaymath}
 
- \structure{functional determinant}
+ \structure{fluctuation determinant}
  \begin{displaymath}
   \det\left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right) = \prod_{n=1}^\infty\lambda_n
  \end{displaymath}
@@ -1047,8 +1047,8 @@
          \exp\left(\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
 		      -2q_\text{i}q_\text{f}}{\sin(\omega t)}\right)\\
       &= \sqrt{\frac{m\omega}{2\pi\hbar\vert{\sin(\omega t)}\vert}}
-         \exp\left[\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
-         -2q_\text{i}q_\text{f}}{\sin(\omega t)}-\text{i}\left(\frac{\pi}{4}+n\frac{\pi}{2}\right)\right]
+         \exp\left(\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
+         -2q_\text{i}q_\text{f}}{\sin(\omega t)}-\text{i}\left(\frac{\pi}{4}+n\frac{\pi}{2}\right)\right)
    \end{aligned}
   \end{displaymath}
 
@@ -1061,5 +1061,48 @@
   K(q_\text{f}, q', \tfrac{3\pi}{2}) = \int_{-\infty}^{+\infty}\text{d}q'
 	     K(q_\text{f}, q', \tfrac{3\pi}{4})K(q', q_\text{i}, \tfrac{3\pi}{4})
  \end{displaymath}
+\end{frame}
+
+\begin{frame}[c]{Nonlinear potentials}
+ action
+ \begin{displaymath}
+  S[q] = \int_0^t\text{d}s\left(\frac{m}{2}\dot q^2 - V(q)\right)
+ \end{displaymath}
+
+ \vspace{0.2truecm}
+ expansion around the classical solution: $q(s) = q_\text{cl}(s)+\xi(s)$
+
+ \begin{footnotesize}
+  \begin{displaymath}
+   \begin{aligned}
+    S &= \int_0^t\text{d}s\left(\frac{m}{2}(\dot q_\text{cl}^2+2\dot q_\text{cl}\dot\xi+\dot\xi^2)
+         -V(q_\text{cl})-V'(q_\text{cl})\xi-\frac{1}{2}V''(q_\text{cl})\xi^2+\ldots\right)\\
+      &= S_\text{cl} - \int_0^t\text{d}s\underbrace{\big(m\ddot q_\text{cl}+V'(q_\text{cl})\big)}_{=0}\xi
+         -\frac{1}{2}\int_0^t\text{d}s \xi\left(m\frac{\text{d}^2}{\text{d}s^2}+V''(q_\text{cl})\right)\xi
+	 + \ldots
+   \end{aligned}
+  \end{displaymath}
+ \end{footnotesize}
+
+ \begin{itemize}
+  \item the quadratic contribution in the fluctuations generally depends on $q_\text{f}$ and $q_\text{i}$
+  \item it leads again to a determinant
+  \item the expansion of $\xi$ does not necessarily need to be done in terms of eigenfunctions 
+ \end{itemize}
+\end{frame}
+
+\begin{frame}[c]{Fluctuation amplitude}
+ \begin{itemize}
+  \item the second-order term in the fluctuations determines their typical amplitude
+	\begin{displaymath}
+         \frac{\xi^2}{\hbar} \sim 1\quad \rightarrow\quad \xi \sim \sqrt{\hbar}
+	\end{displaymath}
+  \item the third-order term is smaller by a factor $\sqrt{\hbar}$ and can be neglected in the
+	semiclassical limit
+  \item however, higher-order terms can become relevant when the eigenvalue of a fluctuation
+	  mode approaches zero\\[0.1truecm]
+	example: for a harmonic oscillator around $t=\pi/\omega$, weak anharmonicities of
+		 the potential may become relevant
+ \end{itemize}
 \end{frame}
 \end{document}
