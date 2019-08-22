@@ -1,0 +1,56 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, Fourier transform of a delta comb}
+}
+\begin{document}
+\pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Verify the relation
+\begin{equation}
+ \sum_{n=-\infty}^{+\infty}\delta(x-2\pi n)
+    = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\text{e}^{\text{i}\ell x}\,.
+\end{equation}
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+The left-hand side is a $2\pi$-periodic function which can be expressed in terms
+of a Fourier series
+\begin{equation}
+ f(x) = \sum_{\ell=-\infty}^{+\infty}c_\ell\text{e}^{\text{i}\ell x}
+\end{equation}
+with coefficients
+\begin{equation}
+ c_\ell = \frac{1}{2\pi}\int_{-\pi}^\pi\text{d}xf(x)\text{e}^{-\text{i}\ell x}\,.
+\end{equation}
+
+In our specific case, we have
+\begin{equation}
+ f(x) = \sum_{n=-\infty}^{+\infty}\delta(x-2\pi n)
+\end{equation}
+and obtain for the Fourier coefficients
+\begin{equation}
+ \begin{aligned}
+  c_\ell &= \frac{1}{2\pi}\sum_{n=-\infty}^{+\infty}\int_{-\pi}^\pi\text{d}x
+	                      \delta(x-2\pi n)\text{e}^{-\text{i}\ell x}\\
+         &= \frac{1}{2\pi}\int_{-\pi}^\pi\text{d}x\delta(x)\text{e}^{-\text{i}\ell x}\\
+         &= \frac{1}{2\pi}\,.
+ \end{aligned}
+\end{equation}
+The Fourier series representation of the $\delta$-comb thus follows as
+\begin{equation}
+ \sum_{n=-\infty}^{+\infty}\delta(x-2\pi n)
+    = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\text{e}^{\text{i}\ell x}\,.
+\end{equation}
+
+\end{document}
