@@ -1,0 +1,77 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, propagator of free particle, semigroup property}
+}
+\begin{document}
+\pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Check the semigroup property for the propagator of a free particle.
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+The propagator of a free particle of mass $m$ is given by
+\begin{equation}
+ \label{eq:propagator}
+ K(q_\text{f}, q_\text{i}, t) = \sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+      \exp\left(\frac{\text{i}}{\hbar}\frac{m(q_\text{f}-q_\text{i})^2}{2t}\right)\,.
+\end{equation}
+We want to show by an explicit calculation that this propagator fulfills the semigroup property
+\begin{equation}
+ \label{eq:semigroup}
+ K(q_\text{f}, q_\text{i}, t_2+t_1)
+    = \int_{-\infty}^{+\infty}\text{d}q' K(q_\text{f}, q', t_2)K(q', q_\text{i}, t_1)\,.
+\end{equation}
+
+We insert (\ref{eq:propagator}) into the right-hand side of (\ref{eq:semigroup}), complete
+the square, and shift the integration variable $q'$:
+\begin{equation}
+ \begin{aligned}
+  \int_{-\infty}^{+\infty}\text{d}q' K(q_\text{f}, q', t_2)K(q', q_\text{i}, t_1) &= 
+  \frac{m}{2\pi\text{i}\hbar\sqrt{t_1t_2}}\int_{-\infty}^{+\infty}\text{d}q'
+    \exp\left[\frac{\text{i}m}{2\hbar}\left(\frac{(q_\text{f}-q')^2}{t_2}+
+                                            \frac{(q'-q_\text{i})^2}{t_1}\right)\right]\\
+  &= \frac{m}{2\pi\text{i}\hbar\sqrt{t_1t_2}}\int_{-\infty}^{+\infty}\text{d}q'
+     \exp\left[\frac{\text{i}m}{2\hbar}\left(\frac{t_1+t_2}{t_1t_2}q'^2
+                                    -2\left(\frac{q_\text{f}}{t_2}+\frac{q_\text{f}}{t_2}\right)q'
+                                    +\frac{q_\text{f}^2}{t_2}+\frac{q_\text{i}^2}{t_1}
+                                    \right)\right]\\
+  &= \frac{m}{2\pi\text{i}\hbar\sqrt{t_1t_2}}\int_{-\infty}^{+\infty}\text{d}q'
+     \exp\left[\frac{\text{i}m}{2\hbar}\frac{t_1+t_2}{t_1t_2}
+                \left(q'-\frac{t_1t_2}{t_1+t_2}\left(\frac{q_\text{f}}{t_2}
+                                       +\frac{q_\text{i}}{t_1}\right)\right)^2\right]\\
+  &\hspace{3truecm}\times\exp\left[\frac{\text{i}m}{2\hbar}\left(\frac{q_\text{f}^2}{t_2}
+                                                                 +\frac{q_\text{i}^2}{t_1}
+                         -\frac{t_1t_2}{t_1+t_2}\left(\frac{q_\text{f}}{t_2}
+                                                       +\frac{q_\text{i}}{t_1}\right)\right)^2\right]\\
+  &= \frac{m}{2\pi\text{i}\hbar\sqrt{t_1t_2}}\exp\left(\frac{\text{i}m}{2\hbar}
+                         \frac{(q_\text{f}-q_\text{i})^2}{t_1+t_2}\right)
+     \int_{-\infty}^{+\infty}\text{d}q'\exp\left(\frac{\text{i}m}{2\hbar}\frac{t_1+t_2}{t_1t_2}q'^2\right)\,.
+ \end{aligned}
+\end{equation}
+
+With the Fresnel integral
+\begin{equation}
+\int_{-\infty}^{+\infty}\text{d}x\exp\left(\text{i}\alpha x^2\right) = \sqrt{\frac{\text{i}\pi}{\alpha}}
+\end{equation}
+we finally obtain
+\begin{equation}
+ \begin{aligned}
+  \int_{-\infty}^{+\infty}\text{d}q' K(q_\text{f}, q', t_2)K(q', q_\text{i}, t_1) &= 
+  \sqrt{\frac{m}{2\pi\text{i}\hbar(t_1+t_2)}}\exp\left(\frac{\text{i}}{\hbar}
+                                \frac{m(q_\text{f}-q_\text{i})^2}{2(t_1+t_2)}\right)\\
+  &= K(q_\text{f}, q_\text{i}, t_2+t_1)\,.
+ \end{aligned}
+\end{equation}
+The propagator of the free particle satisfies the semigroup property as expected.
+\end{document}
