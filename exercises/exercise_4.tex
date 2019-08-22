@@ -1,0 +1,78 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, particle on a ring, change of representation}
+}
+\begin{document}
+% \pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Show that the propagator for a particle on a ring
+\begin{equation}
+ \label{eq:propagator1}
+ K(\phi_\text{f}, \phi_\text{i}, t) = R\sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+    \sum_{n=-\infty}^{+\infty}\exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2}
+			      \frac{(\phi_\text{f}-\phi_\text{i}-2\pi n)^2}{t}\right)
+\end{equation}
+obtained from the Feynman path integral is equivalent to the representation
+\begin{equation}
+ \label{eq:propagator2}
+ K(\phi_\text{f}, \phi_\text{i}, t) = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}
+	\exp\!\left(\text{i}\ell(\phi_\text{f}-\phi_\text{i})
+               -\text{i}\frac{\hbar\ell^2}{2mR^2}t\right)
+\end{equation}
+obtained by means of the eigenvalues and eigenfunctions of the Hamiltonian.
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+The central step in going from (\ref{eq:propagator1}) to (\ref{eq:propagator2}) involves
+the Fourier representation of the $\delta$-comb
+\begin{equation}
+ \label{eq:delta_comb}
+ \sum_{n=-\infty}^{+\infty}\delta(x-2\pi n)
+     = \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\text{e}^{\text{i}\ell x}\,.
+\end{equation}
+
+The propagator is a $2\pi$-periodic function in $q_\text{f}-q_\text{i}$ so that we can
+express the sum in (\ref{eq:propagator1}) in terms of an integral over a $\delta$-comb:
+\begin{equation}
+ K(\phi_\text{f}, \phi_\text{i}, t) = R\sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+   \int_{-\infty}^{+\infty}\!\!\text{d}\phi\exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2t}\phi^2\right)
+   \sum_{n=-\infty}^{+\infty}\delta\big(\phi-(\phi_\text{f}-\phi_\text{i}-2\pi n)\big)\,.
+\end{equation}
+According to (\ref{eq:delta_comb}), we can write
+\begin{equation}
+ \sum_{n=-\infty}^{+\infty}\delta\big(\phi-(\phi_\text{f}-\phi_\text{i}-2\pi n)\big) =
+   \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\text{e}^{\text{i}\ell(\phi-\phi_\text{f}+\phi_\text{i})}
+\end{equation}
+and thus obtain
+\begin{equation}
+ K(\phi_\text{f}, \phi_\text{i}, t) = \frac{R}{2\pi}\sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+  \sum_{\ell=-\infty}^{+\infty}\text{e}^{-\text{i}(\phi_\text{f}-\phi_\text{i})}
+  \int_{-\infty}^{+\infty}\!\!\text{d}\phi\exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2t}\phi^2
+	                  +\text{i}\ell\phi\right)\,.
+\end{equation}
+Completing the square in the exponent of the integrand, we can evaluate the Fresnel integral.
+\begin{equation}
+ \begin{aligned}
+  K(\phi_\text{f}, \phi_\text{i}, t) &= \frac{R}{2\pi}\sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+  \sum_{\ell=-\infty}^{+\infty}\text{e}^{-\text{i}(\phi_\text{f}-\phi_\text{i})}
+	 \int_{-\infty}^{+\infty}\!\!\text{d}\phi\exp\!\left[\text{i}\frac{mR^2}{2\hbar t}
+			\left(\phi+\frac{\hbar t}{mR^2}\ell\right)^2\right]
+			\exp\left(-\text{i}\frac{\hbar t}{2mR^2}\ell^2\right)\\
+   &= \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\exp\left(-\text{i}(\phi_\text{f}-\phi_\text{i})\ell
+			-\text{i}\frac{\hbar t}{2mR^2}\ell^2\right)\\
+ \end{aligned}
+\end{equation}
+Replacing the summation index $\ell$ by $-\ell$, we arrive at the desired result (\ref{eq:propagator2}).
+
+\end{document}
