@@ -1,0 +1,163 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, propagator of free particle, solution by discretization}
+}
+\begin{document}
+% \pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Evaluate the Feynman path integral for the free particle by means of
+discretization. Why is the result independent of the number $N$ of discretization steps?
+
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+The discretized version of the propagator of a free particle is given by
+\begin{equation}
+ \label{eq:discretizedpropagator}
+ K(q_\text{f}, q_\text{i}, t)
+ = \sqrt{\frac{m}{2\pi\text{i}\hbar\Delta t}}\int_{-\infty}^{+\infty}
+   \prod_{n=1}^{N-1}\left(\sqrt{\frac{m}{2\pi\text{i}\hbar\Delta t}}\text{d}q_n\right)
+   \exp\left(\frac{\text{i}}{\hbar}\sum_{n=1}^N\frac{m}{2}\frac{(q_n-q_{n-1})^2}{\Delta t}\right)\,.
+\end{equation}
+Here, $q_N=q_\text{f}$ and $q_0=q_\text{i}$.
+
+For a multidimensional Gaussian integral, we have
+\begin{equation}
+ \label{eq:ndgaussian}
+ \int_{-\infty}^{+\infty}\text{d}x^N \text{e}^{-\mathbf{x}^\text{T}\mathbf{A}\mathbf{x}} =
+                \sqrt{\frac{\pi^N}{\det(\mathbf{A})}}\,.
+\end{equation}
+Without loss of generality, the matrix $\mathbf{A}$ can be assumed to be symmetric, because
+an antisymmetric matrix will not contribute to the bilinear form. The relation (\ref{eq:ndgaussian})
+can then be proven by transforming into the eigenbasis of $\mathbf{A}$ and carrying out the individual
+integrals. The right-hand side is then obtained by realizing that the product of eigenvalues equals
+the determinant of the corresponding matrix.
+
+The same line of reasoning can be applied to a Fresnel integral and we find
+\begin{equation}
+ \label{eq:ndfresnel}
+ \int_{-\infty}^{+\infty}\text{d}x^N \text{e}^{\text{i}\mathbf{x}^\text{T}\mathbf{A}\mathbf{x}} =
+                \sqrt{\frac{(\text{i}\pi)^N}{\det(\mathbf{A})}}\,.
+\end{equation}
+We thus aim at bringing (\ref{eq:discretizedpropagator}) into such a form.
+
+In a first step, we consider the sum in the exponent.
+\begin{equation}
+ \sum_{n=1}^N(q_n-q_{n-1})^2 = q_{N-1}^2+q_1^2+\sum_{n=2}^{N-1}(q_n-q_{n-1})^2
+                               -2q_\text{f}q_{N-1}-2q_\text{i}q_1+q_\text{f}^2+q_\text{i}^2\,.
+\end{equation}
+Realizing that all squares of $q_i, i=1,\ldots,N-1$ appear twice and that the mixed terms arising
+from the squares in the sum have to be splitted into two contributions in a bilinear form, we
+obtain
+\begin{equation}
+ \label{eq:sum_of_squares}
+ \sum_{n=1}^N(q_n-q_{n-1})^2 = \mathbf{x}^T\mathbf{A}\mathbf{x}-2\mathbf{b}^T\mathbf{x}
+                               +q_\text{f}^2+q_\text{i}^2\,.
+\end{equation}
+Here, we have introduced the tridiagonal $(N-1)\times(N-1)$ matrix
+\begin{equation}
+ \label{eq:matrixA}
+ \mathbf{A} = \begin{pmatrix}
+               2     & -1     &  0     & \cdots & 0\\
+              -1     &  2     & \ddots & \ddots & \vdots\\
+               0     & \ddots & \ddots & \ddots & 0\\
+              \vdots & \ddots & \ddots &  2     & -1\\
+               0     & \cdots &  0     & -1     & 2
+
+              \end{pmatrix}
+\end{equation}
+and the vectors
+\begin{equation}
+ \mathbf{x} = \begin{pmatrix} q_{N-1} \\ q_{N-2} \\ \vdots \\ q_2 \\ q_1\end{pmatrix}\qquad
+ \mathbf{b} = \begin{pmatrix} q_\text{f} \\ 0 \\ \vdots \\ 0 \\ q_\text{i}\end{pmatrix}
+\end{equation}
+In (\ref{eq:sum_of_squares}) we can now complete the square to obtain
+\begin{equation}
+ \sum_{n=1}^N(q_n-q_{n-1})^2 = (\mathbf{x}^T-\mathbf{b}^T\mathbf{A}^{-1})\mathbf{A}
+   (\mathbf{x}-\mathbf{A}^{-1}\mathbf{b})-\mathbf{b}^T\mathbf{A}^{-1}\mathbf{b}+q_\text{f}^2+q_\text{i}^2\,.
+\end{equation}
+Carrying out the Fresnel integrals with the help of (\ref{eq:ndfresnel}) we find as a first result
+\begin{equation}
+ \label{eq:discretizedpropagatorafterintegration}
+ K(q_\text{f}, q_\text{i}, t) = \sqrt{\frac{m}{2\pi\text{i}\hbar\Delta t\det(\mathbf{A})}}
+    \exp\left(\frac{\text{i}m}{2\hbar\Delta t}
+              (q_\text{f}^2+q_\text{i}^2-\mathbf{b}^T\mathbf{A}^{-1}\mathbf{b})\right)\,.
+\end{equation}
+
+In order to proceed further, we need to evaluate the determinant of the matrix $\mathbf{A}$ defined in
+(\ref{eq:matrixA}). One possibility is to realize that $\mathbf{A}$ is a tridiagonal Toeplitz matrix
+for which the eigenvalues are known analytically. For our special case, the eigenvalues read
+\begin{equation}
+ \lambda_k = 2\left(1+\cos\left(\frac{\pi k}{N}\right)\right)\qquad k=1,\ldots, N-1
+\end{equation}
+The determinant $D_{N-1}$ of the $(N-1)\times(n-1)$ matrix $\mathbf{A}$ then becomes
+\begin{equation}
+ \label{eq:determinantA}
+ \begin{aligned}
+  D_{N-1} = \det(\mathbf{A}) &= \prod_{k=1}^{N-1}2\left(1+\cos\left(\frac{\pi k}{N}\right)\right)\\
+                             &= \lim_{x\to -1}\prod_{k=1}^{N-1}\left(x^2-2x\cos\left(\frac{\pi k}{N}\right)
+                                                                     +1\right)\\
+                             &= \lim_{x\to -1}\frac{x^{2N}-1}{x^2-1}\\
+                             &= N\,.
+ \end{aligned}
+\end{equation}
+This result can also be obtained by induction. The determinant of $\mathbf{A}$ satisfies
+the recursion relation
+\begin{equation}
+ D_n = 2D_{n-1}-D_{n-2}
+\end{equation}
+with the initial conditions
+\begin{equation}
+ D_1 = 2, D_2 = 3\,.
+\end{equation}
+It can easily be checked that this recursion problem is indeed solved by $D_{N-1}=N$.
+
+In view of the exponent of (\ref{eq:discretizedpropagatorafterintegration}), we need the
+entries in the corners of the matrix $\mathbf{A}^{-1}$ which can easily be obtained by
+directly determining the corresponding elements of the adjugate matrix. On the diagonal, we find
+\begin{equation}
+ (\mathbf{A}^{-1})_{11} = (\mathbf{A}^{-1})_{N-1,N-1} = \frac{D_{N-2}}{D_{N-1}} = 1-\frac{1}{N}\,.
+\end{equation}
+In the off-diagonal corners, the adjugate matrix takes the value 1 and we obtain
+\begin{equation}
+ (\mathbf{A}^{-1})_{N-1,1} = (\mathbf{A}^{-1})_{1,N-1} = \frac{1}{D_{N-1}} = \frac{1}{N}\,.
+\end{equation}
+In the exponent of (\ref{eq:discretizedpropagatorafterintegration}), we thus have
+\begin{equation}
+ \mathbf{b}^T\mathbf{A}^{-1}\mathbf{b} = \left(1-\frac{1}{N}\right)(q_\text{f}^2+q_\text{i}^2)
+                                         +\frac{2}{N}q_\text{f}q_\text{i}
+   = q_\text{f}^2+q_\text{i}^2 - \frac{(q_\text{f}-q_\text{i})^2}{N}
+\end{equation}
+
+Inserting this result together with (\ref{eq:determinantA}) into
+(\ref{eq:discretizedpropagatorafterintegration}), we arrive at
+\begin{equation}
+ K(q_\text{f}, q_\text{i}, t) = \sqrt{\frac{m}{2\pi\text{i}\hbar N\Delta t}}
+    \exp\left(\frac{\text{i}m}{2\hbar}\frac{(q_\text{f}-q_\text{i})^2}{N\Delta t}\right)\,.
+\end{equation}
+Since we had divided the original time interval of length $t$ into $N$ equidistant pieces,
+we have $\Delta t=t/N$ and thus find the exact propagator of the free particle
+\begin{equation}
+ K(q_\text{f}, q_\text{i}, t) = \sqrt{\frac{m}{2\pi\text{i}\hbar t}}
+    \exp\left(\frac{\text{i}m}{2\hbar}\frac{(q_\text{f}-q_\text{i})^2}{t}\right)\,.
+\end{equation}
+
+The fact that we obtain the correct result for any value of $N$ and do not need to take
+the limit $N\to\infty$ is exceptional. The reason is that for vanishing potential energy $V=0$,
+the Lie-Trotter formula is exact not only in the limit $N\to\infty$ but also for any finite $N$.
+Another way of viewing it is that the decomposition in the initial expression
+(\ref{eq:discretizedpropagator}) is nothing else than a multiple application of the 
+semigroup property which we had proven in another exercise. 
+
+\end{document}
