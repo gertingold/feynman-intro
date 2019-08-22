@@ -19,3 +19,5 @@ Presentation at the Bad Honnef Physics School on [Methods of Path Integration in
     (propagator of a particle on a ring)
   * [exercise 5](https://github.com/gertingold/feynman-intro/raw/master/exercises/exercise_5.pdf)
     (propagator of a particle in an infinitely deep potential well)
+  * [exercise 6](https://github.com/gertingold/feynman-intro/raw/master/exercises/exercise_6.pdf)
+    (propagator of the harmonic oscillator from eigenstates and eigenfunctions)
