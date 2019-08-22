@@ -1,0 +1,82 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, harmonic oscillator, Mehler formula}
+}
+\begin{document}
+\pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Derive the propagator of the harmonic oscillator from its stationary
+wave functions and eigenenergies by making use of the Mehler formula
+\begin{equation}
+ \sum_{n=0}^\infty\frac{H_n(x)H_n(y)}{n!}\left(\frac{z}{2}\right)^n
+   = \frac{1}{\sqrt{1-z^2}}\exp\!\left(\frac{2xyz-(x^2+y^2)z^2}{1-z^2}\right)\,.
+\end{equation}
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+The stationary wave functions of a harmonic oscillator with mass $m$ and frequency $\omega$
+are given by
+\begin{equation}
+ \label{eq:eigenfunctions}
+ \psi_n(q) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\frac{1}{\sqrt{2^nn!}}
+	     H_n\left(\sqrt{\frac{m\omega}{\hbar}}q\right)\exp\!\left(-\frac{m\omega}{2\hbar}q^2\right)
+ \qquad n=0, 1, 2,\ldots
+\end{equation}
+with the eigenenergies
+\begin{equation}
+ \label{eq:eigenenergies}
+ E_n = \hbar\omega\left(n+\frac{1}{2}\right)\,.
+\end{equation}
+
+For convenience, we introduce the abbreviation
+\begin{equation}
+ \xi_\text{f} = \sqrt{\frac{m\omega}{\hbar}}q_\text{f}\qquad
+ \xi_\text{i} = \sqrt{\frac{m\omega}{\hbar}}q_\text{i}\,.
+\end{equation}
+
+We start from the general expression of the propagator
+\begin{equation}
+  K(q_\text{f}, q_\text{i}, t) = \sum_{n=0}^\infty\psi_n(q_\text{f})\psi_n(q_\text{i})
+				      \exp\!\left(-\frac{\text{i}}{\hbar}E_nt\right)
+\end{equation}
+and insert (\ref{eq:eigenfunctions}) and (\ref{eq:eigenenergies}). Arranging the terms
+in way suitable for the application of the Mehler formula, we have
+\begin{equation}
+  K(q_\text{f}, q_\text{i}, t)
+    = \sqrt{\frac{m\omega}{\pi\hbar}}\sum_{n=0}^\infty\frac{H_n(\xi_\text{f})H_n(\xi_\text{i})}{n!}
+	\left(\frac{\text{e}^{-\text{i}\omega t}}{2}\right)^n\text{e}^{-\text{i}\frac{\omega}{2}t}
+	\exp\!\left(-\frac{\xi_\text{f}^2+\xi_\text{i}^2}{2}\right)\,.
+\end{equation}
+By means of the Mehler formula, setting $x=\xi_\text{f}, y=\xi_\text{i},$ and
+$z=\text{e}^{-\text{i}\omega t}$ we can express the propagator as
+\begin{equation}
+ \begin{aligned}
+  K(q_\text{f}, q_\text{i}, t)
+  &= \sqrt{\frac{m\omega}{\pi\hbar(1-\text{e}^{-2\text{i}\omega t})}}\text{e}^{-\text{i}\frac{\omega}{2}t}
+     \exp\!\left(-\frac{\xi_\text{f}^2+\xi_\text{i}^2}{2}
+ 	+\frac{2\xi_\text{i}\xi_\text{f}\text{e}^{-\text{i}\omega t}
+ 	       -(\xi_\text{f}^2+\xi_\text{i}^2)\text{e}^{-2\text{i}\omega t}}
+ 	      {1-\text{e}^{-2\text{i}\omega t}}\right)\\
+  &= \sqrt{\frac{m\omega}{2\pi\text{i}\hbar\sin(\omega t)}}
+     \exp\!\left(\frac{\text{i}}{2}(\xi_\text{f}^2+\xi_\text{i}^2)\frac{\cos(\omega t)}{\sin(\omega t)}
+	 -\text{i}\frac{\xi_\text{i}\xi_\text{f}}{\sin(\omega t)}\right)\\
+  &= \sqrt{\frac{m\omega}{2\pi\text{i}\hbar\sin(\omega t)}}
+     \exp\!\left(\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
+	 -2q_\text{i}q_\text{f}}{\sin(\omega t)}\right)\,.
+ \end{aligned}
+\end{equation}
+We thus arrive at the expression which we had obtained by evaluating the Feynman path integral for 
+the harmoni oscillator.
+
+\end{document}
