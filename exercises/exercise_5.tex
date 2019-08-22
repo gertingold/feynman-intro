@@ -1,0 +1,115 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, particle in the box, change of representation}
+}
+\begin{document}
+% \pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Show that the propagator for a particle in an infinitely deep potential well
+\begin{equation}
+ \label{eq:propagator1}
+ K(q_\text{f}, q_\text{i}, t) = \sqrt{\frac{m}{2\pi\text{i}\hbar t}}\sum_{n=-\infty}^{+\infty}
+  \left[\exp\!\left(\frac{\text{i}}{\hbar}\frac{m(2nL+q_\text{f}-q_\text{i})^2}{2t}\right)
+  -\exp\!\left(\frac{\text{i}}{\hbar}\frac{m(2nL-q_\text{f}-q_\text{i})^2}{2t}\right)\right]
+\end{equation}
+obtained from the Feynman path integral agrees with the representation
+\begin{equation}
+ \label{eq:propagator2}
+ K(q_\text{f}, q_\text{i}, t) = \frac{2}{L}\sum_{j=1}^{\infty}
+        \sin\!\left(\frac{\pi j}{L}q_\text{f}\right)\sin\!\left(\frac{\pi j}{L}q_\text{i}\right)
+   \exp\left(-\text{i}\frac{\hbar\pi^2j^2}{2mL^2}t\right)
+\end{equation}
+based on the eigenfunctions and eigenvalues of the Hamiltonian.
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+We follow the same strategy as for the propagator for a particle on a ring and consider the
+first part of the sum in (\ref{eq:propagator1}). The second part then immediately follows by
+the replacement $q_\text{f}\to-q_\text{f}$.
+
+While for the particle on a ring, we were
+dealing with a $2\pi$-periodic function, we now consider a function of period $2L$. The Fourier
+representation of the corresponding $\delta$-comb is given by
+\begin{equation}
+ \sum_{n=-\infty}^{+\infty}\delta(x-2Ln) = \frac{1}{2L}\sum_{\ell=-\infty}^{+\infty}
+                                              \exp\!\left(\text{i}\frac{\pi}{L}\ell x\right)\,.
+\end{equation}
+
+Going through the same steps as for a particle on a ring, we have
+\begin{equation}
+ \begin{aligned}
+  \sum_{n=-\infty}^{+\infty}\exp\!\left(\frac{\text{i}}{\hbar}
+                 \frac{m(2nL+q_\text{f}-q_\text{i})^2}{2t}\right) &= 
+  \sum_{n=-\infty}^{+\infty}\int_{-\infty}^{+\infty}\text{d}q\,\delta(q-q_\text{f}+q_\text{i}-2nL)
+        \exp\!\left(\frac{\text{i}}{\hbar}\frac{mq^2}{2t}\right)\\
+  &= \frac{1}{2L}\sum_{\ell=-\infty}^{+\infty}\int_{-\infty}^{+\infty}\text{d}q
+       \exp\!\left(\text{i}\frac{\pi}{L}\ell(q-q_\text{f}+q_\text{i})\right)
+       \exp\!\left(\frac{\text{i}}{\hbar}\frac{mq^2}{2t}\right)\\
+  &= \frac{1}{2L}\sum_{\ell=-\infty}^{+\infty}
+         \exp\!\left(\text{i}\frac{\pi}{L}\ell(q_\text{f}-q_\text{i})\right)
+  \int_{-\infty}^{+\infty}\text{d}q\exp\!\left(\frac{\text{i}}{\hbar}\frac{mq^2}{2t}
+                         -\text{i}\frac{\pi}{L}\ell q\right)\,.
+ \end{aligned}
+\end{equation}
+In the last line, we have replaced the summation index $\ell$ by $-\ell$. The Fresnel integral
+can be evaluated to yield
+\begin{equation}
+ \begin{aligned}
+  \int_{-\infty}^{+\infty}\text{d}q\exp\!\left(\frac{\text{i}}{\hbar}\frac{mq^2}{2t}
+          -\text{i}\frac{\pi}{L}\ell q\right) &=
+  \int_{-\infty}^{+\infty}\text{d}q\exp\!\left[\text{i}\frac{m}{2\hbar t}\left(q-
+            \frac{\hbar\pi\ell}{mL}t\right)^2\right]
+        \exp\!\left(-\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)\\
+    &= \sqrt{\frac{2\pi\text{i}\hbar t}{m}}\exp\!\left(-\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)\,.
+ \end{aligned}
+\end{equation}
+Inserting this result into the previous expression, we obtain
+\begin{equation}
+ \sqrt{\frac{m}{2\pi\text{i}\hbar t}} \sum_{n=-\infty}^{+\infty}\exp\!\left(\frac{\text{i}}{\hbar}
+                 \frac{m(2nL+q_\text{f}-q_\text{i})^2}{2t}\right) = 
+ \frac{1}{2L}\sum_{\ell=-\infty}^{+\infty}
+    \exp\!\left(\text{i}\frac{\pi}{L}\ell(q_\text{f}-q_\text{i})
+       -\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)\,.
+\end{equation}
+Replacing $q_\text{f}$ by $-q_\text{f}$, we find for the second contribution to (\ref{eq:propagator1})
+\begin{equation}
+ \sqrt{\frac{m}{2\pi\text{i}\hbar t}} \sum_{n=-\infty}^{+\infty}\exp\!\left(\frac{\text{i}}{\hbar}
+                 \frac{m(2nL-q_\text{f}-q_\text{i})^2}{2t}\right) = 
+ \frac{1}{2L}\sum_{\ell=-\infty}^{+\infty}
+    \exp\!\left(\text{i}\frac{\pi}{L}\ell(-q_\text{f}-q_\text{i})
+       -\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)\,.
+\end{equation}
+Subtracting the two contributions, we realize that the terms depending on $q_\text{f}$ can be combined
+to a sine function
+\begin{equation}
+ K(q_\text{f}, q_\text{i}, t) = \frac{\text{i}}{L}\sum_{\ell=-\infty}^{+\infty}
+     \sin\!\left(\frac{\pi}{L}\ell q_\text{f}\right)
+    \exp\!\left(-\text{i}\frac{\pi}{L}\ell q_\text{i}-\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)\,.
+\end{equation}
+Since the term with $\ell=0$ vanishes, we can rewrite this expression as
+\begin{equation}
+ \begin{aligned}
+  K(q_\text{f}, q_\text{i}, t) &= \frac{\text{i}}{L}\sum_{\ell=1}^{+\infty}
+      \sin\!\left(\frac{\pi}{L}\ell q_\text{f}\right)\left[
+             \exp\!\left(-\text{i}\frac{\pi}{L}\ell q_\text{i}\right)
+             -\exp\!\left(\text{i}\frac{\pi}{L}\ell q_\text{i}\right)\right]
+     \exp\!\left(-\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)\\
+  &= \frac{2}{L}\sum_{\ell=1}^{+\infty} \sin\!\left(\frac{\pi}{L}\ell q_\text{f}\right)
+                                        \sin\!\left(\frac{\pi}{L}\ell q_\text{i}\right)
+              \exp\!\left(-\text{i}\frac{\hbar\pi^2\ell^2}{2mL^2}t\right)
+ \end{aligned}
+\end{equation}
+which precisely agrees with the representation (\ref{eq:propagator2}) of the propagator.
+
+\end{document}
