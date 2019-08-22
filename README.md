@@ -21,3 +21,5 @@ Presentation at the Bad Honnef Physics School on [Methods of Path Integration in
     (propagator of a particle in an infinitely deep potential well)
   * [exercise 6](https://github.com/gertingold/feynman-intro/raw/master/exercises/exercise_6.pdf)
     (propagator of the harmonic oscillator from eigenstates and eigenfunctions)
+  * [exercise 7](https://github.com/gertingold/feynman-intro/raw/master/exercises/exercise_7.pdf)
+    (phase check for the propagator of the harmonic oscillator by means of the semigroup property)

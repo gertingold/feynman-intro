@@ -1,0 +1,72 @@
+\documentclass[11pt,DIV=19,parskip=half]{scrartcl}
+\usepackage{amsmath}
+\usepackage{fontawesome}
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{%
+  pdftitle={Introduction to Feynman path integrals}
+  ,pdfauthor={Gert-Ludwig Ingold}
+  ,pdfsubject={Exercise for the Bad Honnef Physics School on
+               Methods of Path Integration in Modern Physics, Bad Honnef, 25.8.2019}
+  ,pdfkeywords={Feynman path integrals, harmonic oscillator, Mehler formula}
+}
+\begin{document}
+\pagestyle{empty}
+\input{header.tex}
+
+\vspace{0.5truecm}
+\textbf{Exercise:} Check the choice of phases in the propagator of the harmonic
+oscillator
+\begin{equation}
+ K(q_\text{f}, q_\text{i}, t)
+      = \sqrt{\frac{m\omega}{2\pi\hbar\vert{\sin(\omega t)}\vert}}
+         \exp\left(\text{i}\frac{m\omega}{2\hbar}\frac{(q_\text{f}^2+q_\text{i}^2)\cos(\omega t)
+         -2q_\text{i}q_\text{f}}{\sin(\omega t)}-\text{i}\left(\frac{\pi}{4}+n\frac{\pi}{2}\right)\right)
+\end{equation}
+with $n=\lfloor\omega t/\pi\rfloor$ by combining two propagators over time intervals
+$3\pi/4\omega$ to a propagator over the time interval $3\pi/2\omega$ by means of the semigroup
+property.
+
+\vspace{0.5truecm}
+\textbf{Solution:}
+
+Inserting the explicit values for the time intervals, we have
+\begin{align}
+ K(q_\text{f}, q_\text{i}, \frac{3\pi}{4\omega})
+      &= \sqrt{\frac{m\omega}{\sqrt{2}\pi\hbar}}
+         \exp\!\left[\text{i}\frac{m\omega}{2\hbar}\left(-(q_\text{f}^2+q_\text{i}^2)
+         -2\sqrt{2}q_\text{i}q_\text{f}\right)-\text{i}\frac{\pi}{4}\right]\\
+\intertext{and}
+ K(q_\text{f}, q_\text{i}, \frac{3\pi}{2\omega})
+      &= \sqrt{\frac{m\omega}{2\pi\hbar}}
+         \exp\!\left[\text{i}\frac{m\omega}{\hbar}q_\text{i}q_\text{f}-\text{i}\frac{3\pi}{4}\right]
+\end{align}
+By means of the semigroup property, we get
+\begin{equation}
+ \begin{aligned}
+  K(q_\text{f}, q_\text{i}, \frac{3\pi}{2\omega}) &= \int_{-\infty}^{+\infty}\text{d}q'
+                K(q_\text{f}, q', \frac{3\pi}{4\omega}) K(q', q_\text{i}, \frac{3\pi}{4\omega})\\
+   &= \frac{m\omega}{\sqrt{2}\pi\hbar} \int_{-\infty}^{+\infty}\text{d}q'
+         \exp\!\left[\text{i}\frac{m\omega}{2\hbar}\left(-q_\text{f}^2-q_\text{i}^2-2q'^2
+                        -2\sqrt{2}(q_\text{f}+q_\text{i})q'\right)-\text{i}\frac{\pi}{2}\right]\\
+   &= \frac{m\omega}{\sqrt{2}\pi\hbar} 
+         \exp\!\left[-\text{i}\frac{m\omega}{2\hbar}(q_\text{f}^2+q_\text{i}^2)-\text{i}\frac{\pi}{2}\right]
+         \int_{-\infty}^{+\infty}\text{d}q'
+         \exp\!\left[-\text{i}\frac{m\omega}{\hbar}
+                 \left(q'+\frac{1}{\sqrt{2}}(q_\text{f}+q_\text{i})\right)^2\right]\\
+   &\hspace{9truecm}\times\exp\!\left[\text{i}\frac{m\omega}{2\hbar}(q_\text{f}+q_\text{i})^2\right]\,.
+ \end{aligned}
+\end{equation}
+The Fresnel integral becomes
+\begin{equation}
+ \int_{-\infty}^{+\infty}\text{d}q'\exp\!\left[-\text{i}\frac{m\omega}{\hbar}
+      \left(q'+\frac{1}{\sqrt{2}}(q_\text{f}+q_\text{i})\right)^2\right]
+ = \sqrt{\frac{\pi\hbar}{m\omega}}\exp\!\left(-\text{i}\frac{\pi}{4}\right)\,.
+\end{equation}
+Thus, we finally arrive at the expected result
+\begin{equation}
+ K(q_\text{f}, q_\text{i}, \frac{3\pi}{2\omega}) = \sqrt{\frac{m\omega}{2\pi\hbar}}
+         \exp\!\left[\text{i}\frac{m\omega}{\hbar}q_\text{i}q_\text{f}-\text{i}\frac{3\pi}{4}\right]\,.
+\end{equation}
+
+\end{document}
