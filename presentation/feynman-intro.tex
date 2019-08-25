@@ -402,12 +402,12 @@
  \begin{displaymath}
   \lim_{N\to\infty}\sum_{n=1}^N\left(\frac{m}{2}\bigg(\frac{q_n-q_{n-1}}{\Delta t}\bigg)^2
                                      -V(q_n)\right)\Delta t
-	= \int_0^t\text{d}s\left(\frac{m}{2}\dot q(s)-V(q)\right)
+	= \int_0^t\text{d}s\left(\frac{m}{2}\dot q(s)^2-V(q)\right)
  \end{displaymath}
 
  in the exponent of the propagator, we find the action functional
  \begin{displaymath}
-  S[q] = \int_0^t\text{d}s\left(\frac{m}{2}\dot q(s)-V\big(q(s)\big)\right)
+  S[q] = \int_0^t\text{d}s\left(\frac{m}{2}\dot q(s)^2-V\big(q(s)\big)\right)
  \end{displaymath}
  which takes a function $q(s)$ and returns a number $S$
 
@@ -655,7 +655,7 @@
        \exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2t}\phi^2\right)
        \sum_{n=-\infty}^{+\infty}\delta\big(\phi-(\phi_\text{f}-\phi_\text{i}-2\pi n)\big)\\
     &= \frac{R}{2\pi}\sqrt{\frac{m}{2\pi\text{i}\hbar t}}\sum_{\ell=-\infty}^{+\infty}
- 	  \exp^{-\text{i}\ell(\phi_\text{f}-\phi_\text{i})}\int_{-\infty}^{+\infty}\!\!\text{d}\phi
+       \exp\!\big(-\text{i}\ell(\phi_\text{f}-\phi_\text{i})\big)\int_{-\infty}^{+\infty}\!\!\text{d}\phi
        \exp\!\left(\frac{\text{i}}{\hbar}\frac{mR^2}{2t}\phi^2+\text{i}\ell\phi\right)\\
     &= \frac{1}{2\pi}\sum_{\ell=-\infty}^{+\infty}\exp\!\left(\text{i}\ell(\phi_\text{f}-\phi_\text{i})
 	   -\text{i}\frac{\hbar\ell^2}{2mR^2}t\right)\qquad\text{\normalsize\ding{51}}
@@ -760,7 +760,7 @@
  \textcolor{red!60!black}{even number of reflections at $q = q_\text{f}+2nL$}\\
  \textcolor{blue!60!black}{odd number of reflections at $q = 2nL-q_\text{f}$}
 
- \vspace{0.3truecm}
+ \vspace{0.1truecm}
  propagator
  \begin{displaymath}
   \begin{aligned}
@@ -771,6 +771,13 @@
 	  \frac{m(2nL-q_\text{f}-q_\text{i})^2}{2t}\right)\right]
   \end{aligned}
  \end{displaymath}
+
+ \begin{scriptsize}
+  \begin{flushright}
+   W. Janke, H. Kleinert, Lett. Nuovo Cim. \textbf{25}, 297 (1979);
+   M. Goodman, Am. J. Phys. \textbf{49}, 843 (1981)
+  \end{flushright}
+ \end{scriptsize}
 \end{frame}
 
 \begin{frame}[t]{Two versions of the propagator}
@@ -921,7 +928,7 @@
  \end{displaymath}
 
  \vspace{0.3truecm}
- What happens for $t=\dfrac{2\pi n}{\omega}$?
+ What happens for $t=\dfrac{\pi n}{\omega}$?
 
  \vspace{0.3truecm}
  boundary value problems \ldots
@@ -973,14 +980,14 @@
  expand the fluctuations in the complete set of eigenfunctions of $\frac{\text{d}^2}{\text{d}s^2}+\omega^2$
  vanishing at the boundaries:
  \begin{displaymath}
-  \left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right)\xi_n(s) = \lambda_n\xi_n(s)
+  -\left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right)\xi_n(s) = \lambda_n\xi_n(s)
  \end{displaymath}
 \end{frame}
 
 \begin{frame}[c]{Eigenfunctions and -values}
  \begin{displaymath}
   \xi_n(s) = \sqrt{\frac{2}{t}}\sin\left(\pi n\frac{s}{t}\right)\qquad
-  \lambda_n = -\frac{\pi^2n^2}{t^2}+\omega^2\qquad n=1, 2,\ldots
+  \lambda_n = \frac{\pi^2n^2}{t^2}-\omega^2\qquad n=1, 2,\ldots
  \end{displaymath}
 
  \begin{itemize}
@@ -997,7 +1004,7 @@
 \begin{frame}[c]{Total action and propagator}
  \structure{action}
  \begin{displaymath}
-  S[q] = S_\text{cl}-\sum_{n=1}^{\infty}\frac{m}{2}\left(-\frac{\pi^2n^2}{t^2}+\omega^2\right)a_n^2
+  S[q] = S_\text{cl}+\sum_{n=1}^{\infty}\frac{m}{2}\left(\frac{\pi^2n^2}{t^2}-\omega^2\right)a_n^2
  \end{displaymath}
 
  \structure{propagator}
@@ -1005,14 +1012,14 @@
   \begin{aligned}
    K(q_\text{f}, q_\text{i},t) &\sim \int_{-\infty}^{+\infty}\cdots\int_{-\infty}^{+\infty} 
      \left(\prod_{n=1}^\infty\text{d}a_n\right)\exp\left[\frac{\text{i}}{\hbar}\left(
-       S_\text{cl}-\frac{m}{2}\sum_{n=1}^\infty\lambda_na_n^2\right)\right]\\
+       S_\text{cl}+\frac{m}{2}\sum_{n=1}^\infty\lambda_na_n^2\right)\right]\\
    &\sim \left(\prod_{n=1}^\infty\lambda_n\right)^{-1/2}\exp\left(\frac{\text{i}}{\hbar}S_\text{cl}\right)
   \end{aligned}
  \end{displaymath}
 
  \structure{fluctuation determinant}
  \begin{displaymath}
-  \det\left(\frac{\text{d}^2}{\text{d}s^2}+\omega^2\right) = \prod_{n=1}^\infty\lambda_n
+  \det\left(-\frac{\text{d}^2}{\text{d}s^2}-\omega^2\right) = \prod_{n=1}^\infty\lambda_n
  \end{displaymath}
 \end{frame}
 
@@ -1036,8 +1043,8 @@
 
  with
  \begin{displaymath}
-  \lambda_n = -\frac{\pi^2n^2}{t^2}+\omega^2\qquad\text{and}\qquad
-  \lambda_n^{(0)} = -\frac{\pi^2n^2}{t^2}
+  \lambda_n = \frac{\pi^2n^2}{t^2}-\omega^2\qquad\text{and}\qquad
+  \lambda_n^{(0)} = \frac{\pi^2n^2}{t^2}
  \end{displaymath}
 \end{frame}
 
